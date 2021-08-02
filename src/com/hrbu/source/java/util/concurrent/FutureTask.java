@@ -37,24 +37,24 @@ package java.util.concurrent;
 import java.util.concurrent.locks.LockSupport;
 
 /**
- * A cancellable asynchronous computation.  This class provides a base
- * implementation of {@link Future}, with methods to start and cancel
- * a computation, query to see if the computation is complete, and
- * retrieve the result of the computation.  The result can only be
- * retrieved when the computation has completed; the {@code get}
- * methods will block if the computation has not yet completed.  Once
- * the computation has completed, the computation cannot be restarted
- * or cancelled (unless the computation is invoked using
- * {@link #runAndReset}).
+ * A cancellable asynchronous computation. 可取消的异步计算。
+ * This class provides a base implementation of {@link Future}, with methods to start and cancel
+ * a computation, query to see if the computation is complete, and retrieve the result of the computation.
+ * 该类提供了Future的基础实现，并提供了开始和取消计算的方法，查询计算是否完成，检索计算的结果。
+ * The result can only be retrieved when the computation has completed; 只有在计算完成后才能检索结果；
+ * the {@code get} methods will block if the computation has not yet completed. {@code get}方法在计算没有完成前会一直阻塞。
+ * Once the computation has completed, the computation cannot be restarted or cancelled
+ * (unless the computation is invoked using {@link #runAndReset}).
+ * 一旦计算结果完成，这个计算就不能被重新开始或者取消（除非使用#runAndReset方法调用计算）。
  *
- * <p>A {@code FutureTask} can be used to wrap a {@link Callable} or
- * {@link Runnable} object.  Because {@code FutureTask} implements
- * {@code Runnable}, a {@code FutureTask} can be submitted to an
- * {@link Executor} for execution.
+ * <p>A {@code FutureTask} can be used to wrap a {@link Callable} or {@link Runnable} object.
+ * Because {@code FutureTask} implements{@code Runnable}, a {@code FutureTask} can be submitted to an {@link Executor} for execution.
+ * FutureTask 可用于包装 Callable 和 Runnable 类。
+ * 因为实现了Runnalbe接口，FutureTask 可以提交到 Executor执行。
  *
  * <p>In addition to serving as a standalone class, this class provides
- * {@code protected} functionality that may be useful when creating
- * customized task classes.
+ * {@code protected} functionality that may be useful when creating customized task classes.
+ * 除了可以作为一个单独的类，还提供了受保护的功能？？？，在创建自定义任务的时候可能很有用。
  *
  * @since 1.5
  * @author Doug Lea
@@ -74,14 +74,14 @@ public class FutureTask<V> implements RunnableFuture<V> {
      */
 
     /**
-     * The run state of this task, initially NEW.  The run state
-     * transitions to a terminal state only in methods set,
-     * setException, and cancel.  During completion, state may take on
-     * transient values of COMPLETING (while outcome is being set) or
-     * INTERRUPTING (only while interrupting the runner to satisfy a
-     * cancel(true)). Transitions from these intermediate to final
-     * states use cheaper ordered/lazy writes because values are unique
-     * and cannot be further modified.
+     * The run state of this task, initially NEW. 此任务的运行状态，最初的状态是NEW。
+     * The run state transitions to a terminal state only in methods set, setException, and cancel.
+     * 运行状态仅在set、setException 和 cancel方法中转变到终端状态。
+     * During completion, state may take on transient values of COMPLETING (while outcome is being set) or
+     * INTERRUPTING (only while interrupting the runner to satisfy a cancel(true)).
+     * 在完成过程中，状态可能具有完成（当结果被设置）或者中断（正在执行的满足取消）的瞬时值。 ？？？？
+     * Transitions from these intermediate to final states use cheaper ordered/lazy writes because values are unique and cannot be further modified.
+     * 从这些中间状态过渡到最终状态使用更便宜的有序或者懒惰的写入，因为值是独一无二的，无法进一步修改。？？？？
      *
      * Possible state transitions:
      * NEW -> COMPLETING -> NORMAL
