@@ -109,7 +109,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
 
     /**
      * Returns result or throws exception for completed task.
-     *
+     * 返回结果或者对于已完成的任务会抛出异常。
      * @param s completed state value
      */
     @SuppressWarnings("unchecked")
@@ -123,8 +123,8 @@ public class FutureTask<V> implements RunnableFuture<V> {
     }
 
     /**
-     * Creates a {@code FutureTask} that will, upon running, execute the
-     * given {@code Callable}.
+     * Creates a {@code FutureTask} that will, upon running, execute the given {@code Callable}.
+     * 创建一个任务，该任务在运行后将执行给定的 Callable方法。
      *
      * @param  callable the callable task
      * @throws NullPointerException if the callable is null
