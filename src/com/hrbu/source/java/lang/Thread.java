@@ -139,7 +139,7 @@ import sun.security.util.SecurityConstants;
  */
 public
 class Thread implements Runnable {
-    /* Make sure registerNatives is the first thing <clinit> does. */
+    /* Make sure registerNatives is the first thing <clinit> does. 定义在Thread.c文件中,注册一些本地方法供. */
     private static native void registerNatives();
     static {
         registerNatives();
@@ -679,8 +679,8 @@ class Thread implements Runnable {
     }
 
     /**
-     * Causes this thread to begin execution; the Java Virtual Machine
-     * calls the <code>run</code> method of this thread.
+     * Causes this thread to begin execution; the Java Virtual Machine calls the <code>run</code> method of this thread.
+     * 导致此线程开始执行; Java虚拟机会回调run方法。
      * <p>
      * The result is that two threads are running concurrently: the
      * current thread (which returns from the call to the
@@ -688,8 +688,8 @@ class Thread implements Runnable {
      * <code>run</code> method).
      * <p>
      * It is never legal to start a thread more than once.
-     * In particular, a thread may not be restarted once it has completed
-     * execution.
+     * In particular, a thread may not be restarted once it has completed execution.
+     * 启动线程超过一次永远不会合法。特别是，一旦线程执行完成可能不会重新启动。
      *
      * @exception  IllegalThreadStateException  if the thread was already
      *               started.
@@ -737,7 +737,7 @@ class Thread implements Runnable {
      * otherwise, this method does nothing and returns.
      * <p>
      * Subclasses of <code>Thread</code> should override this method.
-     *
+     * run 方法并不是真正的线程函数，只是被线程函数调用的一个Java方法而已.
      * @see     #start()
      * @see     #stop()
      * @see     #Thread(ThreadGroup, Runnable, String)
