@@ -1,6 +1,22 @@
 # jdk8-source-learning
 
-JDK8源码学习
+JDK8源码学习,Mac系统
+
+## 版本说明
+
+```shell
+java -version
+```
+java version "1.8.0_211"  
+Java(TM) SE Runtime Environment (build 1.8.0_211-b12)  
+Java HotSpot(TM) 64-Bit Server VM (build 25.211-b12, mixed mode)  
+
+[JDK8 Release Notes](https://www.oracle.com/java/technologies/javase/8u-relnotes.html)
+
+[Java SE 8 Archive Downloads (JDK 8u211 and later)
+](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html)
+
+百度网盘（jdk-8u211-macosx-x64.dmg）
 
 ## 准备工作
 
