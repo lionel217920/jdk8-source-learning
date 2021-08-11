@@ -36,9 +36,9 @@
 package java.util.concurrent;
 
 /**
- * A {@link Future} that is {@link Runnable}. Successful execution of
- * the {@code run} method causes completion of the {@code Future}
- * and allows access to its results.
+ * A {@link Future} that is {@link Runnable}.
+ * Successful execution of the {@code run} method causes completion of the {@code Future} and allows access to its results.
+ * 成功执行 Run 方法可使 Future 完成，并且允许其访问结果。
  * @see FutureTask
  * @see Executor
  * @since 1.6

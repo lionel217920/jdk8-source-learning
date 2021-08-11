@@ -62,15 +62,15 @@ import java.util.concurrent.locks.LockSupport;
  */
 public class FutureTask<V> implements RunnableFuture<V> {
     /*
-     * Revision notes: This differs from previous versions of this
-     * class that relied on AbstractQueuedSynchronizer, mainly to
-     * avoid surprising users about retaining interrupt status during
-     * cancellation races. Sync control in the current design relies
-     * on a "state" field updated via CAS to track completion, along
-     * with a simple Treiber stack to hold waiting threads.
+     * Revision notes: This differs from previous versions of this class that relied on AbstractQueuedSynchronizer,
+     * mainly to avoid surprising users about retaining interrupt status during cancellation races.
+     * 修订说明：不同于以前版本的是，以前版本依赖于AQS，主要是为了避免在取消竞争时保留中断状态这种意外发生。
+     * Sync control in the current design relies on a "state" field updated via CAS to track completion,
+     * along with a simple Treiber stack to hold waiting threads.
+     * 当前版本设计的同步控制依赖于，使用CAS更新的state状态来跟踪完成情况。
      *
-     * Style note: As usual, we bypass overhead of using
-     * AtomicXFieldUpdaters and instead directly use Unsafe intrinsics.
+     * Style note: As usual, we bypass overhead of using AtomicXFieldUpdaters and instead directly use Unsafe intrinsics.
+     * 样式说明：通常情况下，我们绕过使用原子更新，取而替代的是使用Unsafe内联函数。
      */
 
     /**
@@ -101,30 +101,30 @@ public class FutureTask<V> implements RunnableFuture<V> {
     /** The underlying callable; nulled out after running */
     private Callable<V> callable;
     /** The result to return or exception to throw from get() */
-    private Object outcome; // non-volatile, protected by state reads/writes
+    private Object outcome; // non-volatile, protected by state reads/writes  这里为什么不适用volatile是因为happen before原则。
     /** The thread running the callable; CASed during run() */
     private volatile Thread runner;
-    /** Treiber stack of waiting threads */
+    /** Treiber stack of waiting threads 等待的线程都在这里 */
     private volatile WaitNode waiters;
 
     /**
      * Returns result or throws exception for completed task.
-     * 返回结果或者对于已完成的任务会抛出异常。
+     * 返回结果，对于已完成（注释好像不对吧，大于已取消的状态吗？？）的任务会抛出异常。
      * @param s completed state value
      */
     @SuppressWarnings("unchecked")
     private V report(int s) throws ExecutionException {
         Object x = outcome;
-        if (s == NORMAL)
+        if (s == NORMAL) // 等于完成状态就返回
             return (V)x;
-        if (s >= CANCELLED)
+        if (s >= CANCELLED) // 取消或者中断状态会抛出异常
             throw new CancellationException();
         throw new ExecutionException((Throwable)x);
     }
 
     /**
      * Creates a {@code FutureTask} that will, upon running, execute the given {@code Callable}.
-     * 创建一个任务，该任务在运行后将执行给定的 Callable方法。
+     * 构造方法：创建一个任务，该任务在运行后将执行给定的 Callable方法。
      *
      * @param  callable the callable task
      * @throws NullPointerException if the callable is null
@@ -137,9 +137,9 @@ public class FutureTask<V> implements RunnableFuture<V> {
     }
 
     /**
-     * Creates a {@code FutureTask} that will, upon running, execute the
-     * given {@code Runnable}, and arrange that {@code get} will return the
-     * given result on successful completion.
+     * Creates a {@code FutureTask} that will, upon running, execute the given {@code Runnable},
+     * and arrange that {@code get} will return the given result on successful completion.
+     * 创建一个FutureTask: 运行时执行给定的Runnable，get方法会将在成功完成后返回给定的结果。
      *
      * @param runnable the runnable task
      * @param result the result to return on successful completion. If
@@ -207,22 +207,22 @@ public class FutureTask<V> implements RunnableFuture<V> {
     }
 
     /**
-     * Protected method invoked when this task transitions to state
-     * {@code isDone} (whether normally or via cancellation). The
-     * default implementation does nothing.  Subclasses may override
-     * this method to invoke completion callbacks or perform
-     * bookkeeping. Note that you can query status inside the
-     * implementation of this method to determine whether this task
-     * has been cancelled.
+     * Protected method invoked when this task transitions to state {@code isDone} (whether normally or via cancellation).
+     * 当任务过渡状态时（无论是正常完成还是取消），调用这个protected方法。
+     * The default implementation does nothing.
+     * Subclasses may override this method to invoke completion callbacks or perform bookkeeping.
+     * 默认的实现什么也没做。子类可以重写这个方法调用完成的回调或者执行记录。
+     * Note that you can query status inside the implementation of this method to determine whether this task has been cancelled.
+     * 注意点：您可以在本方法的实施中查询状态，以确定此任务是否已取消。
      */
     protected void done() { }
 
     /**
-     * Sets the result of this future to the given value unless
-     * this future has already been set or has been cancelled.
+     * Sets the result of this future to the given value unless this future has already been set or has been cancelled.
+     * 将此Future的结果设置为给定值，除非此Future已经确定或已取消。
      *
-     * <p>This method is invoked internally by the {@link #run} method
-     * upon successful completion of the computation.
+     * <p>This method is invoked internally by the {@link #run} method upon successful completion of the computation.
+     * 这个方法由内部的run方法在计算成功后调用。
      *
      * @param v the value
      */
@@ -235,12 +235,12 @@ public class FutureTask<V> implements RunnableFuture<V> {
     }
 
     /**
-     * Causes this future to report an {@link ExecutionException}
-     * with the given throwable as its cause, unless this future has
-     * already been set or has been cancelled.
+     * Causes this future to report an {@link ExecutionException} with the given throwable as its cause,
+     * unless this future has already been set or has been cancelled.
+     * 使这个Future设置一个异常结果，使用指定的throwable作为原因，
      *
-     * <p>This method is invoked internally by the {@link #run} method
-     * upon failure of the computation.
+     * <p>This method is invoked internally by the {@link #run} method upon failure of the computation.
+     * 这个方法由内部的run方法在计算成功后调用。
      *
      * @param t the cause of failure
      */
@@ -259,19 +259,19 @@ public class FutureTask<V> implements RunnableFuture<V> {
             return;
         try {
             Callable<V> c = callable;
-            if (c != null && state == NEW) {
+            if (c != null && state == NEW) { //callable不为空，状态为new才执行
                 V result;
-                boolean ran;
+                boolean ran; // 局部变量，记录执行是否成功
                 try {
                     result = c.call();
                     ran = true;
                 } catch (Throwable ex) {
                     result = null;
                     ran = false;
-                    setException(ex);
+                    setException(ex); // 失败时将异常放到outcome中
                 }
                 if (ran)
-                    set(result);
+                    set(result); // 执行成功将结果放到outcome中
             }
         } finally {
             // runner must be non-null until state is settled to
@@ -347,9 +347,9 @@ public class FutureTask<V> implements RunnableFuture<V> {
     }
 
     /**
-     * Simple linked list nodes to record waiting threads in a Treiber
-     * stack.  See other classes such as Phaser and SynchronousQueue
-     * for more detailed explanation.
+     * Simple linked list nodes to record waiting threads in a Treiber stack.
+     * 简单的链表列表节点，用来记录在一个程序堆栈中等待的线程。
+     * See other classes such as Phaser and SynchronousQueue for more detailed explanation.
      */
     static final class WaitNode {
         volatile Thread thread;
@@ -358,8 +358,8 @@ public class FutureTask<V> implements RunnableFuture<V> {
     }
 
     /**
-     * Removes and signals all waiting threads, invokes done(), and
-     * nulls out callable.
+     * Removes and signals all waiting threads, invokes done(), and nulls out callable.
+     * 移除并标志所有等待的线程，调用done方法，将callable设置为空。
      */
     private void finishCompletion() {
         // assert state > COMPLETING;
@@ -388,7 +388,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
 
     /**
      * Awaits completion or aborts on interrupt or timeout.
-     *
+     * 等待完成 或 中断 或 超时。
      * @param timed true if use timed waits
      * @param nanos time to wait, if timed
      * @return state upon completion
