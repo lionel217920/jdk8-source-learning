@@ -369,7 +369,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
                     Thread t = q.thread;
                     if (t != null) {
                         q.thread = null;
-                        LockSupport.unpark(t);
+                        LockSupport.unpark(t); // 恢复暂停的线程
                     }
                     WaitNode next = q.next;
                     if (next == null)
@@ -399,8 +399,8 @@ public class FutureTask<V> implements RunnableFuture<V> {
         WaitNode q = null;
         boolean queued = false;
         for (;;) {
-            if (Thread.interrupted()) {
-                removeWaiter(q);
+            if (Thread.interrupted()) { // 判断当前线程是否被中断
+                removeWaiter(q); // 如果当前线程被中断，移除线程
                 throw new InterruptedException();
             }
 
@@ -420,25 +420,25 @@ public class FutureTask<V> implements RunnableFuture<V> {
             else if (timed) {
                 nanos = deadline - System.nanoTime();
                 if (nanos <= 0L) {
-                    removeWaiter(q);
+                    removeWaiter(q); // 超时，移除等待的线程
                     return state;
                 }
                 LockSupport.parkNanos(this, nanos);
             }
             else
-                LockSupport.park(this);
+                LockSupport.park(this); // 暂停当前线程
         }
     }
 
     /**
-     * Tries to unlink a timed-out or interrupted wait node to avoid
-     * accumulating garbage.  Internal nodes are simply unspliced
-     * without CAS since it is harmless if they are traversed anyway
-     * by releasers.  To avoid effects of unsplicing from already
-     * removed nodes, the list is retraversed in case of an apparent
-     * race.  This is slow when there are a lot of nodes, but we don't
-     * expect lists to be long enough to outweigh higher-overhead
-     * schemes.
+     * Tries to unlink a timed-out or interrupted wait node to avoid accumulating garbage.
+     * 尝试取消链接超时或者终端的等待节点，已避免积累垃圾。
+     * Internal nodes are simply unspliced without CAS since it is harmless if they are traversed anyway by releasers.
+     * 内部节点在没有CAS的情况下简单地不进行拼接，因为如果释放程序无论如何都要遍历这些节点，那么这些节点是无害的。
+     * To avoid effects of unsplicing from already removed nodes, the list is retraversed in case of an apparent race.
+     * 为了避免从已删除的节点中取消剪接的影响，在出现明显的竞争时，将重新遍历列表。
+     * This is slow when there are a lot of nodes, but we don't expect lists to be long enough to outweigh higher-overhead schemes.
+     * 当有很多节点时，速度会很慢，但我们不希望列表的长度超过更高开销的计划。
      */
     private void removeWaiter(WaitNode node) {
         if (node != null) {
