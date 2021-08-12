@@ -103,7 +103,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
     /** The result to return or exception to throw from get() */
     private Object outcome; // non-volatile, protected by state reads/writes  这里为什么不适用volatile是因为happen before原则。
     /** The thread running the callable; CASed during run() */
-    private volatile Thread runner;
+    private volatile Thread runner; // 当前执行的线程，通过CAS设置
     /** Treiber stack of waiting threads 等待的线程都在这里 */
     private volatile WaitNode waiters;
 
@@ -170,10 +170,10 @@ public class FutureTask<V> implements RunnableFuture<V> {
             if (mayInterruptIfRunning) {
                 try {
                     Thread t = runner;
-                    if (t != null)
-                        t.interrupt();
-                } finally { // final state
-                    UNSAFE.putOrderedInt(this, stateOffset, INTERRUPTED);
+                    if (t != null) // 给执行的线程发出中断信号，告诉它应该中断了。
+                        t.interrupt(); // 如果线程处于被阻塞状态，会立即退出阻塞状态并抛出InterruptedException，仅此而已。
+                } finally { // 如果线程处于正常活动状态，会设置该线程的中断标识为true，仅此而已。
+                    UNSAFE.putOrderedInt(this, stateOffset, INTERRUPTED); // final state
                 }
             }
         } finally {
@@ -228,7 +228,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
      */
     protected void set(V v) {
         if (UNSAFE.compareAndSwapInt(this, stateOffset, NEW, COMPLETING)) {
-            outcome = v;
+            outcome = v; // 判断状态后才会将结果设置，如果任务取消了这里不会执行。
             UNSAFE.putOrderedInt(this, stateOffset, NORMAL); // final state
             finishCompletion();
         }
@@ -254,7 +254,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
 
     public void run() {
         if (state != NEW ||
-            !UNSAFE.compareAndSwapObject(this, runnerOffset,
+            !UNSAFE.compareAndSwapObject(this, runnerOffset, // 通过CAS设置当前执行的线程
                                          null, Thread.currentThread()))
             return;
         try {
@@ -469,7 +469,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
     private static final long runnerOffset;
     private static final long waitersOffset;
     static {
-        try {
+        try { // 对象的字段在主存中的偏移位置
             UNSAFE = sun.misc.Unsafe.getUnsafe();
             Class<?> k = FutureTask.class;
             stateOffset = UNSAFE.objectFieldOffset
