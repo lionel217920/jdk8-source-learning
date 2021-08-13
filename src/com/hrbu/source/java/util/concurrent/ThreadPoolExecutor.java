@@ -577,11 +577,11 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
     private final AccessControlContext acc;
 
     /**
-     * Class Worker mainly maintains interrupt control state for
-     * threads running tasks, along with other minor bookkeeping.
-     * This class opportunistically extends AbstractQueuedSynchronizer
-     * to simplify acquiring and releasing a lock surrounding each
-     * task execution.  This protects against interrupts that are
+     * Class Worker mainly maintains interrupt control state for threads running tasks, along with other minor bookkeeping.
+     * Worker类主要维护运行任务的线程的中断控制状态，以及其他次要的记帐功能。
+     * This class opportunistically extends AbstractQueuedSynchronizer to simplify acquiring and releasing a lock surrounding each task execution.
+     * 该类适当的扩展了AbstractQueuedSynchronizer，以简化获取和释放围绕每个任务执行的锁。
+     * This protects against interrupts that are
      * intended to wake up a worker thread waiting for a task from
      * instead interrupting a task being run.  We implement a simple
      * non-reentrant mutual exclusion lock rather than use
@@ -1326,8 +1326,8 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
     }
 
     /**
-     * Executes the given task sometime in the future.  The task
-     * may execute in a new thread or in an existing pooled thread.
+     * Executes the given task sometime in the future. The task may execute in a new thread or in an existing pooled thread.
+     * 在将来某个时候执行给定的任务。任务可以在新线程中执行，也可以在现有的池线程中执行。
      *
      * If the task cannot be submitted for execution, either because this
      * executor has been shutdown or because its capacity has been reached,

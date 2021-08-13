@@ -149,7 +149,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
      * @throws NullPointerException if the runnable is null
      */
     public FutureTask(Runnable runnable, V result) {
-        this.callable = Executors.callable(runnable, result);
+        this.callable = Executors.callable(runnable, result); // 这里创建一个RunnableAdapter,Callable的变体
         this.state = NEW;       // ensure visibility of callable
     }
 
@@ -263,7 +263,7 @@ public class FutureTask<V> implements RunnableFuture<V> {
                 V result;
                 boolean ran; // 局部变量，记录执行是否成功
                 try {
-                    result = c.call();
+                    result = c.call(); // 回调callable的call方法
                     ran = true;
                 } catch (Throwable ex) {
                     result = null;

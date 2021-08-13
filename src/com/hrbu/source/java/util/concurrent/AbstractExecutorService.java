@@ -71,8 +71,8 @@ import java.util.*;
 public abstract class AbstractExecutorService implements ExecutorService {
 
     /**
-     * Returns a {@code RunnableFuture} for the given runnable and default
-     * value.
+     * Returns a {@code RunnableFuture} for the given runnable and default value.
+     * 创建一个FutureTask对象，使用两个参数的构造函数，返回的是RunnableFuture
      *
      * @param runnable the runnable task being wrapped
      * @param value the default value for the returned future
@@ -130,8 +130,8 @@ public abstract class AbstractExecutorService implements ExecutorService {
      */
     public <T> Future<T> submit(Callable<T> task) {
         if (task == null) throw new NullPointerException();
-        RunnableFuture<T> ftask = newTaskFor(task);
-        execute(ftask);
+        RunnableFuture<T> ftask = newTaskFor(task); // 创建一个Runnable + Callable
+        execute(ftask); // 由执行器决定怎么执行
         return ftask;
     }
 

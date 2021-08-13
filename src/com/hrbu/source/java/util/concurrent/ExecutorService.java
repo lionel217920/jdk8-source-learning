@@ -226,7 +226,7 @@ public interface ExecutorService extends Executor {
      * for example, {@link java.security.PrivilegedAction} to
      * {@link Callable} form so they can be submitted.
      *
-     * @param task the task to submit
+     * @param task the task to submit  入参是一个Callable，其实就是FutureTask构造方法的入参
      * @param <T> the type of the task's result
      * @return a Future representing pending completion of the task
      * @throws RejectedExecutionException if the task cannot be

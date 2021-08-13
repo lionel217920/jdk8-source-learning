@@ -394,7 +394,7 @@ public class Executors {
      * Returns a {@link Callable} object that, when called, runs the given task and returns the given result.
      * This can be useful when applying methods requiring a {@code Callable} to an otherwise resultless action.
      * 返回一个Callable对象，当调用时，执行给定的任务并且返回给定的结果。
-     * 当需要将Callable方法应用到其他无结果的操作时，这很有用。具体使用的场景呢？？？
+     * 当需要将Callable方法应用到其他无结果的操作时，这很有用。（FutureTask中的应用）
      * @param task the task to run
      * @param result the result to return
      * @param <T> the type of the result
@@ -498,7 +498,7 @@ public class Executors {
     // Non-public classes supporting the public methods
 
     /**
-     * A callable that runs given task and returns given result。运行给定任务和返回给定结果的Callable
+     * A callable that runs given task and returns given result。运行给定任务和返回给定结果的Callable。可以理解为Callable的一个变体
      */
     static final class RunnableAdapter<T> implements Callable<T> {
         final Runnable task;
@@ -508,7 +508,7 @@ public class Executors {
             this.result = result;
         }
         public T call() {
-            task.run();
+            task.run(); // call方法调用Runnable的run方法，返回指定的结果
             return result;
         }
     }
