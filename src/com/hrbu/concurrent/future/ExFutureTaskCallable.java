@@ -20,7 +20,13 @@ public class ExFutureTaskCallable implements Callable<String> {
 
     @Override
     public String call() throws Exception {
-        TimeUnit.MINUTES.sleep(1);
+        System.out.println("开始执行了，在 " + Thread.currentThread().getName());
+        // 执行后睡眠1分钟
+        try {
+            TimeUnit.MINUTES.sleep(1);
+        } catch (InterruptedException e) {
+            System.out.println(Thread.currentThread().getName() + " 被打断了");
+        }
         for (int i = count; i > 0; i--) {
 			//Thread.yield();
             System.out.println(Thread.currentThread().getName() + "当前票数：" + i);
@@ -39,6 +45,12 @@ public class ExFutureTaskCallable implements Callable<String> {
         mThread1.start();
         mThread2.start();
         mThread3.start();
+
+        // main线程休眠20秒后取消任务
+        TimeUnit.SECONDS.sleep(20);
+        System.out.println("Task is cancelled " + futureTask.isCancelled());
+        boolean cancelled = futureTask.cancel(true);
+        System.out.println("Task cancelled result is " + cancelled);
 
         for (int i = 0; i < 5; i++) {
             int finalI = i;
