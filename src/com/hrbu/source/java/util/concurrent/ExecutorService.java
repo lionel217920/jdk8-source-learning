@@ -39,31 +39,31 @@ import java.util.Collection;
 
 /**
  * An {@link Executor} that provides methods to manage termination and
- * methods that can produce a {@link Future} for tracking progress of
- * one or more asynchronous tasks.
+ * methods that can produce a {@link Future} for tracking progress of one or more asynchronous tasks.
+ * 一个{@link Executor}，它提供了一些方法来管理终止，以及一些方法可以生成一个{@link Future}来跟踪一个或多个异步任务的进度。
  *
- * <p>An {@code ExecutorService} can be shut down, which will cause
- * it to reject new tasks.  Two different methods are provided for
- * shutting down an {@code ExecutorService}. The {@link #shutdown}
- * method will allow previously submitted tasks to execute before
- * terminating, while the {@link #shutdownNow} method prevents waiting
- * tasks from starting and attempts to stop currently executing tasks.
- * Upon termination, an executor has no tasks actively executing, no
- * tasks awaiting execution, and no new tasks can be submitted.  An
- * unused {@code ExecutorService} should be shut down to allow
- * reclamation of its resources.
+ * <p>An {@code ExecutorService} can be shut down, which will cause it to reject new tasks.
+ * 可以关闭{@code ExecutorService}，这会导致它拒绝新任务。
+ * Two different methods are provided for shutting down an {@code ExecutorService}.
+ * The {@link #shutdown} method will allow previously submitted tasks to execute before terminating,
+ * while the {@link #shutdownNow} method prevents waiting tasks from starting and attempts to stop currently executing tasks.
+ * 在ExectorService中提供了两个不同的方法来关闭。shutdown方法允许在终止之前执行先前提交的任务，而shutdownNow方法阻止正在等待的任务启动，并试图停止正在执行的任务。
+ * Upon termination, an executor has no tasks actively executing, no tasks awaiting execution, and no new tasks can be submitted.
+ * 当执行器终止时，没有正在执行的任务，没有等待执行的任务，也没有新的任务可以提交。
+ * An unused {@code ExecutorService} should be shut down to allow reclamation of its resources.
+ * 应该关闭未使用的{@code ExecutorService}，以允许其资源的回收。
  *
- * <p>Method {@code submit} extends base method {@link
- * Executor#execute(Runnable)} by creating and returning a {@link Future}
- * that can be used to cancel execution and/or wait for completion.
- * Methods {@code invokeAny} and {@code invokeAll} perform the most
- * commonly useful forms of bulk execution, executing a collection of
- * tasks and then waiting for at least one, or all, to
- * complete. (Class {@link ExecutorCompletionService} can be used to
- * write customized variants of these methods.)
+ * <p>Method {@code submit} extends base method {@link Executor#execute(Runnable)} by creating
+ * and returning a {@link Future} that can be used to cancel execution and/or wait for completion.
+ * submit方法扩展了{@link Executor#execute(Runnable)}基本方法，回一个{@link Future}，可以用来取消执行和/或等待完成。
+ * Methods {@code invokeAny} and {@code invokeAll} perform the most commonly useful forms of bulk execution,
+ * executing a collection of tasks and then waiting for at least one, or all, to complete.
  *
- * <p>The {@link Executors} class provides factory methods for the
- * executor services provided in this package.
+ * (Class {@link ExecutorCompletionService} can be used to write customized variants of these methods.)
+ * {@link ExecutorCompletionService}可用于编写这些方法的自定义变体。
+ *
+ * <p>The {@link Executors} class provides factory methods for the executor services provided in this package.
+ * Executors类为这个包中提供的executor服务提供工厂方法。
  *
  * <h3>Usage Examples</h3>
  *
@@ -211,14 +211,14 @@ public interface ExecutorService extends Executor {
         throws InterruptedException;
 
     /**
-     * Submits a value-returning task for execution and returns a
-     * Future representing the pending results of the task. The
-     * Future's {@code get} method will return the task's result upon
-     * successful completion.
+     * Submits a value-returning task for execution and returns a Future representing the pending results of the task.
+     * 提交一个有返回值任务用于执行，并返回一个表示任务的未决结果的Future。
+     * The Future's {@code get} method will return the task's result upon successful completion.
+     * Future的{@code get}方法将在成功完成后返回任务的结果。
      *
      * <p>
-     * If you would like to immediately block waiting
-     * for a task, you can use constructions of the form
+     * If you would like to immediately block waiting for a task, you can use constructions of the form
+     * 如果您想立即阻塞等待任务，可以使用表单的构造：
      * {@code result = exec.submit(aCallable).get();}
      *
      * <p>Note: The {@link Executors} class includes a set of methods
@@ -236,9 +236,9 @@ public interface ExecutorService extends Executor {
     <T> Future<T> submit(Callable<T> task);
 
     /**
-     * Submits a Runnable task for execution and returns a Future
-     * representing that task. The Future's {@code get} method will
-     * return the given result upon successful completion.
+     * Submits a Runnable task for execution and returns a Future representing that task.
+     * The Future's {@code get} method will return the given result upon successful completion.
+     * 提交要执行的Runnable任务，并返回表示该任务的Future。Future的{@code get}方法将在成功完成后返回给定的结果。
      *
      * @param task the task to submit
      * @param result the result to return
@@ -251,9 +251,9 @@ public interface ExecutorService extends Executor {
     <T> Future<T> submit(Runnable task, T result);
 
     /**
-     * Submits a Runnable task for execution and returns a Future
-     * representing that task. The Future's {@code get} method will
-     * return {@code null} upon <em>successful</em> completion.
+     * Submits a Runnable task for execution and returns a Future representing that task.
+     * The Future's {@code get} method will return {@code null} upon <em>successful</em> completion.
+     * 提交要执行的Runnable任务，并返回表示该任务的Future。Future的{@code get}方法将在成功完成后返回null。
      *
      * @param task the task to submit
      * @return a Future representing pending completion of the task
