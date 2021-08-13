@@ -36,19 +36,19 @@
 package java.util.concurrent;
 
 /**
- * A {@code Future} represents the result of an asynchronous
- * computation.  Methods are provided to check if the computation is
- * complete, to wait for its completion, and to retrieve the result of
- * the computation.  The result can only be retrieved using method
- * {@code get} when the computation has completed, blocking if
- * necessary until it is ready.  Cancellation is performed by the
- * {@code cancel} method.  Additional methods are provided to
- * determine if the task completed normally or was cancelled. Once a
- * computation has completed, the computation cannot be cancelled.
- * If you would like to use a {@code Future} for the sake
- * of cancellability but not provide a usable result, you can
- * declare types of the form {@code Future<?>} and
- * return {@code null} as a result of the underlying task.
+ * A {@code Future} represents the result of an asynchronous computation. A Future 代表的是异步计算的结果。
+ * Methods are provided to check if the computation is complete, to wait for its completion,
+ * and to retrieve the result of the computation.<br/> 提供的方法用于检查计算是否完成、等待计算完成和检索计算结果。
+ * The result can only be retrieved using method {@code get} when the computation has completed,
+ * blocking if necessary until it is ready.<br/>
+ * 只有在计算完成后，才能使用get方法检索结果，如有必要，将其阻塞，直到计算就绪。
+ * Cancellation is performed by the {@code cancel} method. 取消由cancel方法执行。
+ * Additional methods are provided to determine if the task completed normally or was cancelled.
+ * Once a computation has completed, the computation cannot be cancelled. <br/>
+ * 提供了其他方法来确定任务是正常完成还是被取消。一旦计算完成，计算就不能被取消。
+ * If you would like to use a {@code Future} for the sake of cancellability but not provide a usable result,
+ * you can declare types of the form {@code Future<?>} and return {@code null} as a result of the underlying task.
+ * 如果你想使用{@code Future}来实现可取消性，但又不能提供一个可用的结果，你可以声明{@code Future>}并返回null作为底层任务的结果。
  *
  * <p>
  * <b>Sample Usage</b> (Note that the following classes are all
@@ -138,10 +138,10 @@ public interface Future<V> {
     boolean isDone();
 
     /**
-     * Waits if necessary for the computation to complete, and then
-     * retrieves its result.
+     * Waits if necessary for the computation to complete, and then retrieves its result.<br/>
+     * 在必要时等待计算完成，然后检索其结果。
      *
-     * @return the computed result
+     * @return the computed result 返回计算结果
      * @throws CancellationException if the computation was cancelled
      * @throws ExecutionException if the computation threw an
      * exception
@@ -151,8 +151,8 @@ public interface Future<V> {
     V get() throws InterruptedException, ExecutionException;
 
     /**
-     * Waits if necessary for at most the given time for the computation
-     * to complete, and then retrieves its result, if available.
+     * Waits if necessary for at most the given time for the computation to complete, and then retrieves its result, if available. <br/>
+     * 如果有必要，最多等待给定的时间来完成计算，然后检索其结果(如果可用)。
      *
      * @param timeout the maximum time to wait
      * @param unit the time unit of the timeout argument
