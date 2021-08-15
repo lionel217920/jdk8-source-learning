@@ -37,14 +37,14 @@ package java.util.concurrent;
 import java.util.*;
 
 /**
- * Provides default implementations of {@link ExecutorService}
- * execution methods. This class implements the {@code submit},
- * {@code invokeAny} and {@code invokeAll} methods using a
- * {@link RunnableFuture} returned by {@code newTaskFor}, which defaults
- * to the {@link FutureTask} class provided in this package.  For example,
- * the implementation of {@code submit(Runnable)} creates an
- * associated {@code RunnableFuture} that is executed and
- * returned. Subclasses may override the {@code newTaskFor} methods
+ * Provides default implementations of {@link ExecutorService} execution methods.
+ * This class implements the {@code submit}, {@code invokeAny} and {@code invokeAll} methods using a
+ * {@link RunnableFuture} returned by {@code newTaskFor}, which defaults to the {@link FutureTask} class provided in this package.
+ * 提供{@link ExecutorService}执行方法的默认实现。这个类使用{@code newTaskFor}返回的{@link RunnableFuture}实现 submit、invokeAny和invokeAll方法，
+ * {@code newTaskFor}默认为该包中提供的{@link FutureTask}类。
+ * For example, the implementation of {@code submit(Runnable)} creates an associated {@code RunnableFuture} that is executed and returned.
+ * 例如，{@code submit(Runnable)}的实现创建一个关联的{@code RunnableFuture}，该{@code RunnableFuture}被执行并返回。
+ * Subclasses may override the {@code newTaskFor} methods
  * to return {@code RunnableFuture} implementations other than
  * {@code FutureTask}.
  *

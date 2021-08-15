@@ -46,8 +46,8 @@ import java.util.*;
 
 /**
  * An {@link ExecutorService} that executes each submitted task using
- * one of possibly several pooled threads, normally configured
- * using {@link Executors} factory methods.
+ * one of possibly several pooled threads, normally configured using {@link Executors} factory methods.
+ * 一个{@link ExecutorService}，它使用可能的几个池线程之一执行每个提交的任务，通常使用{@link Executors}工厂方法配置。
  *
  * <p>Thread pools address two different problems: they usually
  * provide improved performance when executing large numbers of
