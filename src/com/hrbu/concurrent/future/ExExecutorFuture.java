@@ -57,7 +57,7 @@ public class ExExecutorFuture {
 
         for (int i = 0; i < 10; i++) {
             ComputeTask computeTask = exExecutorFuture.new ComputeTask(i, "Task" + i);
-            Future<Integer> futureTask = executorService.submit(computeTask);
+            Future<Integer> futureTask = calculate(computeTask);
             taskList.add(futureTask);
         }
 
@@ -71,6 +71,8 @@ public class ExExecutorFuture {
         }
 
         System.out.println("多任务计算后的总结果是:" + totalResult);
+
+        System.out.println("所有任务完毕, 结束！");
 
         executorService.shutdown();
     }

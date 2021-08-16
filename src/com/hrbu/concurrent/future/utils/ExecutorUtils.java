@@ -15,6 +15,11 @@ import java.util.concurrent.TimeoutException;
  */
 public class ExecutorUtils {
 
+    /**
+     * 自定义的FutureTask的，同步执行被拒绝的任务
+     *
+     * @param <V>
+     */
     public static class CallableFuture<V> implements Future<V>, Callable<V> {
 
         private V result;
@@ -81,6 +86,7 @@ public class ExecutorUtils {
         }
         try {
             for (CallableFuture<Q> future : rejectedList) {
+                System.out.println("被决绝任务在" + Thread.currentThread().getName() + "中执行。");
                 future.call();
             }
             for (Future<Q> future : futureList) {
