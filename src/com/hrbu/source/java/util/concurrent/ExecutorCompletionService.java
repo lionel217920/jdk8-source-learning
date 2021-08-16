@@ -36,21 +36,21 @@
 package java.util.concurrent;
 
 /**
- * A {@link CompletionService} that uses a supplied {@link Executor}
- * to execute tasks.  This class arranges that submitted tasks are,
- * upon completion, placed on a queue accessible using {@code take}.
- * The class is lightweight enough to be suitable for transient use
- * when processing groups of tasks.
+ * A {@link CompletionService} that uses a supplied {@link Executor} to execute tasks.
+ * This class arranges that submitted tasks are, upon completion, placed on a queue accessible using {@code take}.
+ * The class is lightweight enough to be suitable for transient use when processing groups of tasks.
+ * 使用提供的{@link Executor}执行任务的{@link CompletionService}。
+ * 这个类将提交的任务在完成后，安排放置在使用{@code take}可访问的队列上。该类非常轻量，适合在处理任务组时临时使用。
  *
  * <p>
  *
  * <b>Usage Examples.</b>
  *
- * Suppose you have a set of solvers for a certain problem, each
- * returning a value of some type {@code Result}, and would like to
- * run them concurrently, processing the results of each of them that
- * return a non-null value, in some method {@code use(Result r)}. You
- * could write this as:
+ * Suppose you have a set of solvers for a certain problem, each returning a value of some type {@code Result},
+ * and would like to run them concurrently, processing the results of each of them that
+ * return a non-null value, in some method {@code use(Result r)}.
+ * 假设你有一组解决某个问题的求解器，每个都返回一个类型为{@code Result}的值，并希望并行运行它们，处理它们的结果，并希望并发运行它们，处理每个返回非空值的结果，在某些方法{@code use(Result r)}中。
+ * You could write this as:
  *
  * <pre> {@code
  * void solve(Executor e,
@@ -68,9 +68,9 @@ package java.util.concurrent;
  *     }
  * }}</pre>
  *
- * Suppose instead that you would like to use the first non-null result
- * of the set of tasks, ignoring any that encounter exceptions,
- * and cancelling all other tasks when the first one is ready:
+ * Suppose instead that you would like to use the first non-null result of the set of tasks,
+ * ignoring any that encounter exceptions, and cancelling all other tasks when the first one is ready:
+ * 相反，假设你想使用任务集的第一个非空结果，忽略任何遇到异常的任务，并在第一个任务就绪时取消所有其他任务:
  *
  * <pre> {@code
  * void solve(Executor e,
@@ -110,14 +110,14 @@ public class ExecutorCompletionService<V> implements CompletionService<V> {
     private final BlockingQueue<Future<V>> completionQueue;
 
     /**
-     * FutureTask extension to enqueue upon completion
+     * FutureTask extension to enqueue upon completion。FutureTask的扩展在完成时进入队列
      */
     private class QueueingFuture extends FutureTask<Void> {
         QueueingFuture(RunnableFuture<V> task) {
             super(task, null);
             this.task = task;
         }
-        protected void done() { completionQueue.add(task); }
+        protected void done() { completionQueue.add(task); } // 这里就用到了FutureTask中的可扩展的方法。
         private final Future<V> task;
     }
 
