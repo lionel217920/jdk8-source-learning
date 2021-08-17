@@ -137,8 +137,8 @@ public class ExecutorCompletionService<V> implements CompletionService<V> {
 
     /**
      * Creates an ExecutorCompletionService using the supplied
-     * executor for base task execution and a
-     * {@link LinkedBlockingQueue} as a completion queue.
+     * executor for base task execution and a {@link LinkedBlockingQueue} as a completion queue.
+     * 创建一个ExecutorCompletionService使用提供的执行器来任务执行，使用{@link LinkedBlockingQueue}作为完成队列。
      *
      * @param executor the executor to use
      * @throws NullPointerException if executor is {@code null}
@@ -154,8 +154,8 @@ public class ExecutorCompletionService<V> implements CompletionService<V> {
 
     /**
      * Creates an ExecutorCompletionService using the supplied
-     * executor for base task execution and the supplied queue as its
-     * completion queue.
+     * executor for base task execution and the supplied queue as its completion queue.
+     * 创建一个ExecutorCompletionService使用提供的执行器来任务执行，使用提供的队列作为完成队列。
      *
      * @param executor the executor to use
      * @param completionQueue the queue to use as the completion queue
