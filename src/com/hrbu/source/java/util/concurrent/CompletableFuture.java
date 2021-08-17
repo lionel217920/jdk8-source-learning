@@ -378,12 +378,12 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
         return t;
     }
 
-    /* ------------- Async task preliminaries -------------- */
+    /* ------------- Async task preliminaries 异步任务初步工作 -------------- */
 
     /**
-     * A marker interface identifying asynchronous tasks produced by
-     * {@code async} methods. This may be useful for monitoring,
-     * debugging, and tracking asynchronous activities.
+     * A marker interface identifying asynchronous tasks produced by {@code async} methods.
+     * This may be useful for monitoring, debugging, and tracking asynchronous activities.
+     * 由{@code async}标识方法生成的异步任务的标记接口。这对于监视、调试和跟踪异步活动可能很有用。
      *
      * @since 1.8
      */
@@ -391,23 +391,23 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     private static final boolean useCommonPool =
-        (ForkJoinPool.getCommonPoolParallelism() > 1);
+        (ForkJoinPool.getCommonPoolParallelism() > 1); // 判断是否使用commonPool
 
     /**
-     * Default executor -- ForkJoinPool.commonPool() unless it cannot
-     * support parallelism.
+     * Default executor -- ForkJoinPool.commonPool() unless it cannot support parallelism.
+     * 默认执行器——ForkJoinPool.commonPool()，除非它不能支持并行性。
      */
     private static final Executor asyncPool = useCommonPool ?
         ForkJoinPool.commonPool() : new ThreadPerTaskExecutor();
 
-    /** Fallback if ForkJoinPool.commonPool() cannot support parallelism */
+    /** Fallback if ForkJoinPool.commonPool() cannot support parallelism 应急计划以针对于不支持并行*/
     static final class ThreadPerTaskExecutor implements Executor {
         public void execute(Runnable r) { new Thread(r).start(); }
     }
 
     /**
-     * Null-checks user executor argument, and translates uses of
-     * commonPool to asyncPool in case parallelism disabled.
+     * Null-checks user executor argument, and translates uses of commonPool to asyncPool in case parallelism disabled.
+     * 对于传入的执行器入参做了非空校验，并在禁用并行性的情况下将commonPool的使用转换为asyncPool。
      */
     static Executor screenExecutor(Executor e) {
         if (!useCommonPool && e == ForkJoinPool.commonPool())
@@ -421,16 +421,16 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     static final int ASYNC  =  1;
     static final int NESTED = -1;
 
-    /* ------------- Base Completion classes and operations -------------- */
+    /* ------------- Base Completion classes and operations Completion基础类和一些操作 -------------- */
 
     @SuppressWarnings("serial")
     abstract static class Completion extends ForkJoinTask<Void>
         implements Runnable, AsynchronousCompletionTask {
-        volatile Completion next;      // Treiber stack link
+        volatile Completion next;      // Treiber stack link 栈链接
 
         /**
-         * Performs completion action if triggered, returning a
-         * dependent that may need propagation, if one exists.
+         * Performs completion action if triggered, returning a dependent that may need propagation, if one exists.
+         * 如果被触发，执行完成操作，返回一个可能需要传播的依赖项，如果存在的话。
          *
          * @param mode SYNC, ASYNC, or NESTED
          */
@@ -450,8 +450,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Pops and tries to trigger all reachable dependents.  Call only
-     * when known to be done.
+     * Pops and tries to trigger all reachable dependents.  Call only when known to be done.
+     *
      */
     final void postComplete() {
         /*
