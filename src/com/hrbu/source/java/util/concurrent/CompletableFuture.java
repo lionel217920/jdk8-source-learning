@@ -53,10 +53,10 @@ import java.util.concurrent.CompletionStage;
 import java.util.concurrent.locks.LockSupport;
 
 /**
- * A {@link Future} that may be explicitly completed (setting its
- * value and status), and may be used as a {@link CompletionStage},
- * supporting dependent functions and actions that trigger upon its
- * completion.
+ * A {@link Future} that may be explicitly completed (setting its value and status),
+ * and may be used as a {@link CompletionStage},
+ * supporting dependent functions and actions that trigger upon its completion.
+ * 一个可以显式完成的{@link Future}(设置其值和状态)，可以用作{@link CompletionStage}，支持在其完成时触发的依赖函数和动作。
  *
  * <p>When two or more threads attempt to
  * {@link #complete complete},
@@ -64,45 +64,45 @@ import java.util.concurrent.locks.LockSupport;
  * {@link #cancel cancel}
  * a CompletableFuture, only one of them succeeds.
  *
- * <p>In addition to these and related methods for directly
- * manipulating status and results, CompletableFuture implements
- * interface {@link CompletionStage} with the following policies: <ul>
+ * <p>In addition to these and related methods for directly manipulating status and results,
+ * CompletableFuture implements interface {@link CompletionStage} with the following policies:
+ * 除了这些直接操作状态和结果的方法外，CompletableFuture还实现了使用以下策略的接口{@link CompletionStage} <ul>
  *
- * <li>Actions supplied for dependent completions of
- * <em>non-async</em> methods may be performed by the thread that
- * completes the current CompletableFuture, or by any other caller of
- * a completion method.</li>
+ * <li>Actions supplied for dependent completions of <em>non-async</em> methods may be performed by the thread that
+ * completes the current CompletableFuture, or by any other caller of a completion method.
+ * 为非异步方法的依赖完成提供的操作，可以由完成当前CompletableFuture的线程执行，也可以由完成方法的任何其他调用者执行。
+ * </li>
  *
- * <li>All <em>async</em> methods without an explicit Executor
- * argument are performed using the {@link ForkJoinPool#commonPool()}
- * (unless it does not support a parallelism level of at least two, in
- * which case, a new Thread is created to run each task).  To simplify
- * monitoring, debugging, and tracking, all generated asynchronous
- * tasks are instances of the marker interface {@link
- * AsynchronousCompletionTask}. </li>
+ * <li>All <em>async</em> methods without an explicit Executor argument are performed using the {@link ForkJoinPool#commonPool()}
+ * (unless it does not support a parallelism level of at least two, in which case, a new Thread is created to run each task).
+ * 所有没有显式Executor参数的异步方法都使用{@link ForkJoinPool#commonPool()}执行。
+ * (除非它不支持至少两个并行级别，在这种情况下，将创建一个新的Thread来运行每个任务)。
+ * To simplify monitoring, debugging, and tracking, all generated asynchronous tasks are instances of the marker interface {@link AsynchronousCompletionTask}.
+ * 为了简化监控、调试和跟踪，所有生成的异步任务都是标记接口{@link AsynchronousCompletionTask}的实例。
+ * </li>
  *
- * <li>All CompletionStage methods are implemented independently of
- * other public methods, so the behavior of one method is not impacted
- * by overrides of others in subclasses.  </li> </ul>
+ * <li>All CompletionStage methods are implemented independently of other public methods,
+ * so the behavior of one method is not impacted by overrides of others in subclasses.
+ * 所有CompletionStage方法的实现都独立于其他公共方法，因此一个方法的行为不会受到子类中其他方法的覆盖的影响。 </li> </ul>
  *
  * <p>CompletableFuture also implements {@link Future} with the following
  * policies: <ul>
  *
- * <li>Since (unlike {@link FutureTask}) this class has no direct
- * control over the computation that causes it to be completed,
- * cancellation is treated as just another form of exceptional
- * completion.  Method {@link #cancel cancel} has the same effect as
- * {@code completeExceptionally(new CancellationException())}. Method
- * {@link #isCompletedExceptionally} can be used to determine if a
- * CompletableFuture completed in any exceptional fashion.</li>
+ * <li>Since (unlike {@link FutureTask}) this class has no direct control over the computation that causes it to be completed,
+ * cancellation is treated as just another form of exceptional completion.
+ * 由于(不像{@link FutureTask})这个类不能直接控制导致它完成的计算，取消被视为另一种形式的异常完成。
+ * Method {@link #cancel cancel} has the same effect as {@code completeExceptionally(new CancellationException())}.
+ * Method {@link #isCompletedExceptionally} can be used to determine if a CompletableFuture completed in any exceptional fashion.
+ *
+ * </li>
  *
  * <li>In case of exceptional completion with a CompletionException,
- * methods {@link #get()} and {@link #get(long, TimeUnit)} throw an
- * {@link ExecutionException} with the same cause as held in the
- * corresponding CompletionException.  To simplify usage in most
- * contexts, this class also defines methods {@link #join()} and
- * {@link #getNow} that instead throw the CompletionException directly
- * in these cases.</li> </ul>
+ * methods {@link #get()} and {@link #get(long, TimeUnit)} throw an {@link ExecutionException} with the same cause as held in the corresponding CompletionException.
+ * 在使用CompletionException异常完成的情况下，
+ * 方法{@link #get()}和{@link #get(long, TimeUnit)}抛出{@link ExecutionException}，其原因与CompletionException中持有的原因相同。
+ * To simplify usage in most contexts, this class also defines methods {@link #join()} and {@link #getNow} that instead throw the CompletionException directly in these cases.
+ * 为了简化大多数情况下的使用，这个类还定义了方法{@link #join()}和{@link #getNow}，而不是直接抛出CompletionException。
+ * </li> </ul>
  *
  * @author Doug Lea
  * @since 1.8
@@ -112,107 +112,107 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     /*
      * Overview:
      *
-     * A CompletableFuture may have dependent completion actions,
-     * collected in a linked stack. It atomically completes by CASing
-     * a result field, and then pops off and runs those actions. This
-     * applies across normal vs exceptional outcomes, sync vs async
-     * actions, binary triggers, and various forms of completions.
+     * A CompletableFuture may have dependent completion actions, collected in a linked stack.
+     * CompletableFuture可能有依赖的完成操作，收集在链表的堆栈中。
+     * It atomically completes by CASing a result field, and then pops off and runs those actions.
+     * This applies across normal vs exceptional outcomes, sync vs async actions, binary triggers, and various forms of completions.
+     * 通过CAS封装结果字段，原子地完成，然后弹出并运行这些操作。这适用于正常和异常结果、同步和异步动作、二进制触发器和各种形式的完成。
      *
-     * Non-nullness of field result (set via CAS) indicates done.  An
-     * AltResult is used to box null as a result, as well as to hold
-     * exceptions.  Using a single field makes completion simple to
-     * detect and trigger.  Encoding and decoding is straightforward
-     * but adds to the sprawl of trapping and associating exceptions
-     * with targets.  Minor simplifications rely on (static) NIL (to
-     * box null results) being the only AltResult with a null
-     * exception field, so we don't usually need explicit comparisons.
-     * Even though some of the generics casts are unchecked (see
-     * SuppressWarnings annotations), they are placed to be
-     * appropriate even if checked.
+     * Non-nullness of field result (set via CAS) indicates done.
+     * An AltResult is used to box null as a result, as well as to hold exceptions.
+     * Using a single field makes completion simple to detect and trigger.
+     * 字段结果的非空(通过CAS设置)表示完成。AltResult用于将null装入盒子作为结果，也用于保存异常。使用单个字段可以简单地检测和触发补全。
+     * Encoding and decoding is straightforward but adds to the sprawl of trapping and associating exceptions with targets.
+     * Minor simplifications rely on (static) NIL (to box null results) being the only AltResult with a null exception field,
+     * so we don't usually need explicit comparisons.
      *
-     * Dependent actions are represented by Completion objects linked
-     * as Treiber stacks headed by field "stack". There are Completion
-     * classes for each kind of action, grouped into single-input
-     * (UniCompletion), two-input (BiCompletion), projected
-     * (BiCompletions using either (not both) of two inputs), shared
-     * (CoCompletion, used by the second of two sources), zero-input
-     * source actions, and Signallers that unblock waiters. Class
-     * Completion extends ForkJoinTask to enable async execution
-     * (adding no space overhead because we exploit its "tag" methods
-     * to maintain claims). It is also declared as Runnable to allow
-     * usage with arbitrary executors.
+     * Even though some of the generics casts are unchecked
+     * (see SuppressWarnings annotations), they are placed to be appropriate even if checked.
+     * 尽管有些泛型强制转换是未检查的，即使检查过，它们的位置也要适当。
      *
-     * Support for each kind of CompletionStage relies on a separate
-     * class, along with two CompletableFuture methods:
+     * Dependent actions are represented by Completion objects linked as Treiber stacks headed by field "stack".
      *
-     * * A Completion class with name X corresponding to function,
-     *   prefaced with "Uni", "Bi", or "Or". Each class contains
-     *   fields for source(s), actions, and dependent. They are
-     *   boringly similar, differing from others only with respect to
-     *   underlying functional forms. We do this so that users don't
-     *   encounter layers of adaptors in common usages. We also
-     *   include "Relay" classes/methods that don't correspond to user
-     *   methods; they copy results from one stage to another.
+     * There are Completion classes for each kind of action, grouped into single-input (UniCompletion),
+     * two-input (BiCompletion), projected (BiCompletions using either (not both) of two inputs),
+     * shared (CoCompletion, used by the second of two sources),
+     * zero-input source actions, and Signallers that unblock waiters.
+     * Completion类每种类型的操作都有，分为单输入(uniccomplete)、双输入(biccompletion)、计划的(使用两个输入中的任意一个(不是两个都使用)的biccompletion)、共享(CoCompletion，由两个源中的第二个使用)、零输入源操作和解除等待器阻塞的Signallers。
+     * Class Completion extends ForkJoinTask to enable async execution
+     * (adding no space overhead because we exploit its "tag" methods to maintain claims).
+     * It is also declared as Runnable to allow usage with arbitrary executors.
+     * Completion继承ForkJoinTask类异步执行，(不增加空间开销，因为我们利用它的“标签”方法来维护声明)。它还被声明为Runnable以允许任意执行器使用。
      *
-     * * Boolean CompletableFuture method x(...) (for example
-     *   uniApply) takes all of the arguments needed to check that an
-     *   action is triggerable, and then either runs the action or
-     *   arranges its async execution by executing its Completion
-     *   argument, if present. The method returns true if known to be
-     *   complete.
+     * Support for each kind of CompletionStage relies on a separate class, along with two CompletableFuture methods:
+     * 对每一种CompletionStage的支持都依赖于一个单独的类，以及两个CompletableFuture方法:
      *
-     * * Completion method tryFire(int mode) invokes the associated x
-     *   method with its held arguments, and on success cleans up.
-     *   The mode argument allows tryFire to be called twice (SYNC,
-     *   then ASYNC); the first to screen and trap exceptions while
-     *   arranging to execute, and the second when called from a
-     *   task. (A few classes are not used async so take slightly
-     *   different forms.)  The claim() callback suppresses function
-     *   invocation if already claimed by another thread.
+     * * A Completion class with name X corresponding to function, prefaced with "Uni", "Bi", or "Or".
+     *   一个名为X的Completion类，与以“Uni”、“Bi”或“or”开头的函数对应，。
+     *   Each class contains fields for source(s), actions, and dependent.
+     *   They are boringly similar, differing from others only with respect to underlying functional forms.
+     *   We do this so that users don't encounter layers of adaptors in common usages.
+     *   每个类都包含源、操作和依赖项的字段。它们非常相似，只是在基本的功能形式上有所不同。我们这样做是为了让用户在通常的使用中不会遇到适配器层。
+     *   We also include "Relay" classes/methods that don't correspond to user methods; they copy results from one stage to another.
+     *   我们还包括“Relay”类/方法，它们不对应于用户方法; 他们把结果从一个阶段复制到另一个阶段。
      *
-     * * CompletableFuture method xStage(...) is called from a public
-     *   stage method of CompletableFuture x. It screens user
-     *   arguments and invokes and/or creates the stage object.  If
-     *   not async and x is already complete, the action is run
-     *   immediately.  Otherwise a Completion c is created, pushed to
-     *   x's stack (unless done), and started or triggered via
-     *   c.tryFire.  This also covers races possible if x completes
-     *   while pushing.  Classes with two inputs (for example BiApply)
-     *   deal with races across both while pushing actions.  The
-     *   second completion is a CoCompletion pointing to the first,
-     *   shared so that at most one performs the action.  The
-     *   multiple-arity methods allOf and anyOf do this pairwise to
-     *   form trees of completions.
+     * * Boolean CompletableFuture method x(...) (for example uniApply)
+     *   takes all of the arguments needed to check that an action is triggerable,
+     *   and then either runs the action or arranges its async execution by executing its Completion argument, if present.
+     *   获取检查动作是否可触发所需的所有参数，然后运行该动作，或者通过执行其Completion参数(如果存在的话)来安排其异步执行。
+     *   The method returns true if known to be complete.
+     *   如果已知该方法是完成的，则返回true。
      *
-     * Note that the generic type parameters of methods vary according
-     * to whether "this" is a source, dependent, or completion.
+     * * Completion method tryFire(int mode) invokes the associated x method with its held arguments, and on success cleans up.
+     *   Completion的tryFire(int模式)方法，调用与其持有的参数关联的x方法，并在成功清除时进行清理。
+     *   The mode argument allows tryFire to be called twice (SYNC, then ASYNC);
+     *   the first to screen and trap exceptions while arranging to execute, and the second when called from a task.
+     *   (A few classes are not used async so take slightly different forms.)
+     *   mode参数允许调用tryFire两次(SYNC，然后ASYNC); 第一个用于在安排执行时筛选和捕获异常，第二个用于从任务调用时。(有几个类不是异步使用的，所以形式略有不同。)
+     *   The claim() callback suppresses function invocation if already claimed by another thread.
+     *   如果已经被另一个线程声明，那么claim()回调函数将抑制函数调用。
      *
-     * Method postComplete is called upon completion unless the target
-     * is guaranteed not to be observable (i.e., not yet returned or
-     * linked). Multiple threads can call postComplete, which
-     * atomically pops each dependent action, and tries to trigger it
-     * via method tryFire, in NESTED mode.  Triggering can propagate
-     * recursively, so NESTED mode returns its completed dependent (if
-     * one exists) for further processing by its caller (see method
-     * postFire).
+     * * CompletableFuture method xStage(...) is called from a public stage method of CompletableFuture x.
+     *   CompletableFuture的xStage(...)是被CompletableFuture x public stage 方法调用的。
+     *   It screens user arguments and invokes and/or creates the stage object.
+     *   If not async and x is already complete, the action is run immediately.
+     *   Otherwise a Completion c is created, pushed to x's stack (unless done), and started or triggered via c.tryFire.
+     *   它筛选用户参数并调用and/or创建阶段对象。如果不是async且x已经完成，则该操作将立即运行。否则，将创建一个Completion c，并推入x的堆栈(除非已经完成)，并通过c.tryfire启动或触发。
+     *   This also covers races possible if x completes while pushing.
+     *   Classes with two inputs (for example BiApply) deal with races across both while pushing actions.
      *
-     * Blocking methods get() and join() rely on Signaller Completions
-     * that wake up waiting threads.  The mechanics are similar to
-     * Treiber stack wait-nodes used in FutureTask, Phaser, and
-     * SynchronousQueue. See their internal documentation for
-     * algorithmic details.
+     *   The second completion is a CoCompletion pointing to the first, shared so that at most one performs the action.
      *
-     * Without precautions, CompletableFutures would be prone to
-     * garbage accumulation as chains of Completions build up, each
-     * pointing back to its sources. So we null out fields as soon as
-     * possible (see especially method Completion.detach). The
-     * screening checks needed anyway harmlessly ignore null arguments
-     * that may have been obtained during races with threads nulling
-     * out fields.  We also try to unlink fired Completions from
-     * stacks that might never be popped (see method postFire).
+     *   The multiple-arity methods allOf and anyOf do this pairwise to form trees of completions.
+     *   多重性方法 allOf 和 anyOf 成对地完成这个任务，形成补全树。
+     *
+     * Note that the generic type parameters of methods vary according to whether "this" is a source, dependent, or completion.
+     * 注意，方法的泛型类型参数根据“this”是源、依赖还是完成而变化。
+     *
+     * Method postComplete is called upon completion unless the target is guaranteed not to be observable (i.e., not yet returned or linked).
+     * 方法postComplete在完成时被调用，除非目标被保证是不可观察的(也就是说，还没有返回或链接)。
+     * Multiple threads can call postComplete, which atomically pops each dependent action,
+     * and tries to trigger it via method tryFire, in NESTED mode.
+     * 多个线程可以调用postComplete，它原子地弹出每个依赖的操作，并尝试在嵌套模式下通过tryFire方法触发它。
+     * Triggering can propagate recursively, so NESTED mode returns its completed dependent (if one exists)
+     * for further processing by its caller (see method postFire).
+     * 触发可以递归传播，因此嵌套模式返回其完整的依赖项(如果存在的话)，以便由其调用者进行进一步处理(请参阅方法postFire)。
+     *
+     * Blocking methods get() and join() rely on Signaller Completions that wake up waiting threads.
+     * 阻塞方法get()和join()依赖于唤醒等待线程的Signaller Completions。
+     * The mechanics are similar to Treiber stack wait-nodes used in FutureTask, Phaser, and SynchronousQueue.
+     * See their internal documentation for algorithmic details.
+     * 其机制类似于FutureTask、Phaser和SynchronousQueue中使用的Treiber堆栈等待节点。
+     *
+     * Without precautions, CompletableFutures would be prone to garbage accumulation as chains of Completions build up, each pointing back to its sources.
+     * 如果不采取预防措施，CompletableFutures将很容易随着Completion链条的建立而垃圾堆积，每个Completion链条都指向它的源。
+     * So we null out fields as soon as possible (see especially method Completion.detach).
+     * 因此，我们要尽快将属性空出来(请参阅Completion.detach方法)。
+     * The screening checks needed anyway harmlessly ignore null arguments that may have been obtained during races with threads nulling out fields.
+     *
+     * We also try to unlink fired Completions from stacks that might never be popped (see method postFire).
+     * 我们还尝试从可能永远不会弹出的堆栈中解除触发的Completions的链接(参见方法postFire)。
      * Completion fields need not be declared as final or volatile
-     * because they are only visible to other threads upon safe
-     * publication.
+     * because they are only visible to other threads upon safe publication.
+     * Completion字段不需要声明为final或volatile，因为它们只在安全发布时对其他线程可见。
      */
 
     volatile Object result;       // Either the result or boxed AltResult
