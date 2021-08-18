@@ -1,7 +1,5 @@
 package com.hrbu.concurrent.future;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,9 +27,9 @@ public class ExCompletableFutureAsync {
         public Integer get() {
             System.out.println(name + " begin..");
             sleep();
-            if (value.equals(1)) {
-                throw new RuntimeException();
-            }
+//            if (value.equals(1)) {
+//                throw new RuntimeException();
+//            }
             System.out.println(name + " end " + value);
             return value;
         }
@@ -53,7 +51,7 @@ public class ExCompletableFutureAsync {
     }
 
     public void asyncRun() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             Calculate calculate = new Calculate(i);
             CompletableFuture<Void> future = CompletableFuture.runAsync(calculate);
 
@@ -65,24 +63,17 @@ public class ExCompletableFutureAsync {
 //                e.printStackTrace();
 //            }
             future.join();
-            //System.out.println(future.isDone());
+
+            System.out.println(future.isDone());
         }
     }
 
     public void supplyAsync() {
         Integer totalCount = 0;
 
-        CompletableFuture<Integer>[] futureList = new CompletableFuture[10];
         for (int i = 0; i < 10; i++) {
             Calculate calculate = new Calculate(i);
             CompletableFuture<Integer> future = CompletableFuture.supplyAsync(calculate, executorService);
-            //totalCount += future.join();
-            futureList[i] = future;
-        }
-
-        CompletableFuture.allOf(futureList).join();
-
-        for (CompletableFuture<Integer> future : futureList) {
             totalCount += future.join();
         }
 
@@ -91,8 +82,8 @@ public class ExCompletableFutureAsync {
 
     public static void main(String[] args) {
         ExCompletableFutureAsync futureAsync = new ExCompletableFutureAsync();
-        //futureAsync.asyncRun();
-        futureAsync.supplyAsync();
+        futureAsync.asyncRun();
+        //futureAsync.supplyAsync();
 
         executorService.shutdown();
     }

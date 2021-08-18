@@ -3,384 +3,228 @@
   <ID>JAVA</ID>
   <OriginalElement>java.util.concurrent.CompletableFuture.Completion</OriginalElement>
   <nodes>
-    <node x="928.5759803921569" y="456.0">java.util.concurrent.CompletableFuture.OrRun</node>
-    <node x="2215.729166666667" y="374.0">java.util.concurrent.CompletableFuture.UniApply</node>
-    <node x="1983.7291666666667" y="374.0">java.util.concurrent.CompletableFuture.UniWhenComplete</node>
-    <node x="822.8259803921569" y="292.0">java.util.concurrent.CompletableFuture.Signaller</node>
-    <node x="1130.575980392157" y="456.0">java.util.concurrent.CompletableFuture.OrAccept</node>
-    <node x="0.0" y="80.0">java.util.concurrent.CompletableFuture.AsynchronousCompletionTask</node>
-    <node x="1963.450980392157" y="456.0">java.util.concurrent.CompletableFuture.BiRelay</node>
-    <node x="558.7500000000001" y="80.0">java.lang.Runnable</node>
-    <node x="525.7500000000001" y="0.0">java.lang.FunctionalInterface</node>
-    <node x="2776.729166666667" y="456.0">java.util.concurrent.CompletableFuture.BiAccept</node>
-    <node x="226.75" y="0.0">java.util.concurrent.Future</node>
-    <node x="630.5759803921569" y="292.0">java.util.concurrent.CompletableFuture.CoCompletion</node>
-    <node x="1347.7291666666667" y="374.0">java.util.concurrent.CompletableFuture.UniExceptionally</node>
-    <node x="1563.7291666666667" y="374.0">java.util.concurrent.CompletableFuture.BiCompletion</node>
-    <node x="280.0" y="80.0">java.util.concurrent.ForkJoinTask</node>
-    <node x="754.5759803921569" y="456.0">java.util.concurrent.CompletableFuture.OrRelay</node>
-    <node x="975.0759803921569" y="374.0">java.util.concurrent.CompletableFuture.UniCompose</node>
-    <node x="1416.3541666666667" y="160.0">java.lang.SuppressWarnings</node>
-    <node x="2399.729166666667" y="374.0">java.util.concurrent.CompletableFuture.UniAccept</node>
-    <node x="2571.729166666667" y="374.0">java.util.concurrent.CompletableFuture.UniRun</node>
-    <node x="1792.7291666666667" y="374.0">java.util.concurrent.CompletableFuture.UniHandle</node>
-    <node x="1424.450980392157" y="456.0">java.util.concurrent.CompletableFuture.OrApply</node>
-    <node x="70.0" y="292.0">java.util.concurrent.CompletableFuture.AsyncRun</node>
-    <node x="1721.4791666666667" y="292.0">java.util.concurrent.CompletableFuture.UniCompletion</node>
-    <node x="374.75" y="0.0">java.io.Serializable</node>
-    <node x="2586.729166666667" y="456.0">java.util.concurrent.CompletableFuture.BiApply</node>
-    <node x="375.3259803921569" y="292.0">java.util.concurrent.CompletableFuture.AsyncSupply</node>
-    <node x="2956.729166666667" y="456.0">java.util.concurrent.CompletableFuture.BiRun</node>
-    <node x="409.125" y="160.0">java.util.concurrent.CompletableFuture.Completion</node>
-    <node x="1182.075980392157" y="374.0">java.util.concurrent.CompletableFuture.UniRelay</node>
+    <node x="868.0" y="490.0">java.util.concurrent.CompletableFuture.OrRun</node>
+    <node x="1302.0" y="390.0">java.util.concurrent.CompletableFuture.UniApply</node>
+    <node x="858.0" y="390.0">java.util.concurrent.CompletableFuture.UniWhenComplete</node>
+    <node x="1366.0" y="290.0">java.util.concurrent.CompletableFuture.Signaller</node>
+    <node x="108.0" y="490.0">java.util.concurrent.CompletableFuture.OrAccept</node>
+    <node x="1074.0" y="80.0">java.util.concurrent.CompletableFuture.AsynchronousCompletionTask</node>
+    <node x="620.0" y="490.0">java.util.concurrent.CompletableFuture.BiRelay</node>
+    <node x="1628.0" y="80.0">java.lang.Runnable</node>
+    <node x="1584.0" y="0.0">java.lang.FunctionalInterface</node>
+    <node x="240.0" y="490.0">java.util.concurrent.CompletableFuture.BiAccept</node>
+    <node x="1202.0" y="290.0">java.util.concurrent.CompletableFuture.CoCompletion</node>
+    <node x="1304.0" y="0.0">java.util.concurrent.Future</node>
+    <node x="1574.0" y="390.0">java.util.concurrent.CompletableFuture.UniExceptionally</node>
+    <node x="414.0" y="390.0">java.util.concurrent.CompletableFuture.BiCompletion</node>
+    <node x="1350.0" y="80.0">java.util.concurrent.ForkJoinTask</node>
+    <node x="744.0" y="490.0">java.util.concurrent.CompletableFuture.OrRelay</node>
+    <node x="710.0" y="390.0">java.util.concurrent.CompletableFuture.UniCompose</node>
+    <node x="0.0" y="565.0">java.lang.SuppressWarnings</node>
+    <node x="1434.0" y="390.0">java.util.concurrent.CompletableFuture.UniAccept</node>
+    <node x="1186.0" y="390.0">java.util.concurrent.CompletableFuture.UniRun</node>
+    <node x="496.0" y="490.0">java.util.concurrent.CompletableFuture.OrApply</node>
+    <node x="1046.0" y="390.0">java.util.concurrent.CompletableFuture.UniHandle</node>
+    <node x="1514.0" y="210.0">java.util.concurrent.CompletableFuture.AsyncRun</node>
+    <node x="1030.0" y="290.0">java.util.concurrent.CompletableFuture.UniCompletion</node>
+    <node x="1420.0" y="0.0">java.io.Serializable</node>
+    <node x="372.0" y="490.0">java.util.concurrent.CompletableFuture.BiApply</node>
+    <node x="1358.0" y="210.0">java.util.concurrent.CompletableFuture.AsyncSupply</node>
+    <node x="0.0" y="490.0">java.util.concurrent.CompletableFuture.BiRun</node>
+    <node x="1210.0" y="210.0">java.util.concurrent.CompletableFuture.Completion</node>
+    <node x="578.0" y="390.0">java.util.concurrent.CompletableFuture.UniRelay</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="java.util.concurrent.CompletableFuture.Completion" target="java.util.concurrent.ForkJoinTask" relationship="GENERALIZATION">
+    <edge source="java.util.concurrent.CompletableFuture.BiAccept" target="java.util.concurrent.CompletableFuture.BiCompletion">
       <point x="0.0" y="-15.0" />
-      <point x="475.625" y="130.0" />
-      <point x="365.5" y="130.0" />
+      <point x="296.0" y="460.0" />
+      <point x="459.0" y="460.0" />
+      <point x="-27.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.OrAccept" target="java.util.concurrent.CompletableFuture.BiCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="164.0" y="450.0" />
+      <point x="441.0" y="450.0" />
+      <point x="-45.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.UniApply" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="1358.0" y="360.0" />
+      <point x="1139.7777777777778" y="360.0" />
+      <point x="33.77777777777783" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.AsyncSupply" target="java.util.concurrent.CompletableFuture.AsynchronousCompletionTask">
+      <point x="-45.33333333333326" y="-15.0" />
+      <point x="1380.6666666666667" y="150.0" />
+      <point x="1202.0" y="150.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniApply" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="-40.75" y="-15.0" />
-      <point x="2256.479166666667" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
+    <edge source="java.util.concurrent.CompletableFuture.Completion" target="java.util.concurrent.ForkJoinTask">
+      <point x="0.0" y="-15.0" />
+      <point x="1274.0" y="160.0" />
+      <point x="1374.0" y="160.0" />
+      <point x="-48.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.AsyncRun" target="java.util.concurrent.ForkJoinTask">
+      <point x="0.0" y="-15.0" />
+      <point x="1570.0" y="130.0" />
+      <point x="1470.0" y="130.0" />
+      <point x="48.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.UniExceptionally" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="1662.0" y="340.0" />
+      <point x="1173.5555555555557" y="340.0" />
+      <point x="67.55555555555566" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.UniRelay" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="634.0" y="350.0" />
+      <point x="1055.3333333333333" y="350.0" />
+      <point x="-50.66666666666674" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.AsyncSupply" target="java.lang.Runnable">
+      <point x="45.33333333333326" y="-15.0" />
+      <point x="1471.3333333333333" y="180.0" />
+      <point x="1684.0" y="180.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrRun" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
+    <edge source="java.util.concurrent.CompletableFuture.UniCompletion" target="java.util.concurrent.CompletableFuture.Completion">
+      <point x="0.0" y="-15.0" />
+      <point x="1106.0" y="265.0" />
+      <point x="1231.3333333333333" y="265.0" />
+      <point x="-42.66666666666674" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.UniAccept" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="1494.0" y="350.0" />
+      <point x="1156.6666666666667" y="350.0" />
+      <point x="50.66666666666674" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.BiRelay" target="java.util.concurrent.CompletableFuture.BiCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="672.0" y="460.0" />
+      <point x="513.0" y="460.0" />
+      <point x="27.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.OrApply" target="java.util.concurrent.CompletableFuture.BiCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="548.0" y="470.0" />
+      <point x="495.0" y="470.0" />
+      <point x="9.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.ForkJoinTask" target="java.io.Serializable">
       <point x="36.0" y="-15.0" />
-      <point x="1036.575980392157" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
+      <point x="1458.0" y="55.0" />
+      <point x="1492.0" y="55.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.CoCompletion" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="38.0" y="-15.0" />
-      <point x="744.5759803921569" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
+    <edge source="java.util.concurrent.CompletableFuture.Completion" target="java.lang.Runnable">
+      <point x="42.66666666666674" y="-15.0" />
+      <point x="1316.6666666666667" y="170.0" />
+      <point x="1646.6666666666667" y="170.0" />
+      <point x="-37.33333333333326" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniRelay" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-35.5" y="-15.0" />
-      <point x="1217.575980392157" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrRelay" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-38.5" y="-15.0" />
-      <point x="793.0759803921569" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.CoCompletion" target="java.util.concurrent.CompletableFuture.Completion" relationship="GENERALIZATION">
-      <point x="-38.0" y="-15.0" />
-      <point x="668.5759803921569" y="271.0" />
-      <point x="860.8541666666667" y="271.0" />
-      <point x="860.8541666666667" y="231.0" />
-      <point x="475.625" y="231.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniAccept" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="38.0" y="-15.0" />
-      <point x="2513.729166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniWhenComplete" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="53.0" y="-15.0" />
-      <point x="2142.729166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrApply" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
-      <point x="43.75" y="-15.0" />
-      <point x="1555.700980392157" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiAccept" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
-      <point x="-40.0" y="-15.0" />
-      <point x="2816.729166666667" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiRelay" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="37.25" y="-15.0" />
-      <point x="2075.200980392157" y="425.0" />
-      <point x="2389.229166666667" y="425.0" />
-      <point x="2389.229166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniRun" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="-33.0" y="-15.0" />
-      <point x="2604.729166666667" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncRun" target="java.util.concurrent.CompletableFuture.AsynchronousCompletionTask" relationship="REALIZATION">
-      <point x="-45.0" y="-15.0" />
-      <point x="85.0" y="221.0" />
-      <point x="113.5" y="221.0" />
-      <point x="113.5" y="140.0" />
-      <point x="130.0" y="140.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniCompletion" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="50.5" y="-15.0" />
-      <point x="1872.9791666666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrRelay" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
-      <point x="38.5" y="-15.0" />
-      <point x="870.0759803921569" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncSupply" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="63.75" y="-15.0" />
-      <point x="524.0759803921569" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiRun" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
-      <point x="-34.75" y="-15.0" />
-      <point x="2991.479166666667" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.Signaller" target="java.util.concurrent.CompletableFuture.Completion" relationship="GENERALIZATION">
-      <point x="-28.0" y="-15.0" />
-      <point x="850.8259803921569" y="271.0" />
-      <point x="860.8541666666667" y="271.0" />
-      <point x="860.8541666666667" y="231.0" />
-      <point x="475.625" y="231.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.Completion" target="java.lang.Runnable" relationship="REALIZATION">
-      <point x="44.33333333333337" y="-15.0" />
-      <point x="519.9583333333334" y="140.0" />
-      <point x="617.7500000000001" y="140.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.Signaller" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="28.0" y="-15.0" />
-      <point x="906.8259803921569" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiRelay" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
-      <point x="-37.25" y="-15.0" />
-      <point x="2000.700980392157" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiApply" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
-      <point x="-42.5" y="-15.0" />
-      <point x="2629.229166666667" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.ForkJoinTask" target="java.util.concurrent.Future" relationship="REALIZATION">
-      <point x="-42.75" y="-15.0" />
-      <point x="322.75" y="55.0" />
-      <point x="290.75" y="55.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncRun" target="java.lang.Runnable" relationship="REALIZATION">
-      <point x="15.0" y="-15.0" />
-      <point x="145.0" y="241.0" />
-      <point x="617.7500000000001" y="241.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncRun" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="45.0" y="-15.0" />
-      <point x="175.0" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniWhenComplete" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="-53.0" y="-15.0" />
-      <point x="2036.7291666666667" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiAccept" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="40.0" y="-15.0" />
-      <point x="2896.729166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniRelay" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="35.5" y="-15.0" />
-      <point x="1288.575980392157" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniExceptionally" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="49.0" y="-15.0" />
-      <point x="1494.7291666666667" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniCompose" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-46.5" y="-15.0" />
-      <point x="1021.5759803921569" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncSupply" target="java.lang.Runnable" relationship="REALIZATION">
-      <point x="21.25" y="-15.0" />
-      <point x="481.5759803921569" y="251.0" />
-      <point x="617.7500000000001" y="251.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.ForkJoinTask" target="java.io.Serializable" relationship="REALIZATION">
-      <point x="42.75" y="-15.0" />
-      <point x="408.25" y="55.0" />
-      <point x="440.25" y="55.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniCompletion" target="java.util.concurrent.CompletableFuture.Completion" relationship="GENERALIZATION">
-      <point x="-50.5" y="-15.0" />
-      <point x="1771.9791666666667" y="271.0" />
-      <point x="860.8541666666667" y="271.0" />
-      <point x="860.8541666666667" y="231.0" />
-      <point x="475.625" y="231.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncRun" target="java.util.concurrent.ForkJoinTask" relationship="GENERALIZATION">
-      <point x="-15.0" y="-15.0" />
-      <point x="115.0" y="231.0" />
-      <point x="329.47916666666674" y="231.0" />
-      <point x="329.47916666666674" y="130.0" />
-      <point x="365.5" y="130.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrRun" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-36.0" y="-15.0" />
-      <point x="964.5759803921569" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniRun" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="33.0" y="-15.0" />
-      <point x="2670.729166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrAccept" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-41.0" y="-15.0" />
-      <point x="1171.575980392157" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniHandle" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="42.75" y="-15.0" />
-      <point x="1920.9791666666667" y="343.0" />
-      <point x="1933.9791666666667" y="343.0" />
-      <point x="1933.9791666666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiApply" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="42.5" y="-15.0" />
-      <point x="2714.229166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncSupply" target="java.util.concurrent.ForkJoinTask" relationship="GENERALIZATION">
-      <point x="-21.25" y="-15.0" />
-      <point x="439.0759803921569" y="211.0" />
-      <point x="365.5" y="211.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniExceptionally" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-49.0" y="-15.0" />
-      <point x="1396.7291666666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiCompletion" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-52.25" y="-15.0" />
-      <point x="1615.9791666666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiRun" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="34.75" y="-15.0" />
-      <point x="3060.979166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniHandle" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="-42.75" y="-15.0" />
-      <point x="1835.4791666666667" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.lang.Runnable" target="java.lang.FunctionalInterface" relationship="ANNOTATION">
+    <edge source="java.util.concurrent.CompletableFuture.CoCompletion" target="java.util.concurrent.CompletableFuture.Completion">
       <point x="0.0" y="-15.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.Completion" target="java.util.concurrent.CompletableFuture.AsynchronousCompletionTask" relationship="REALIZATION">
-      <point x="-44.33333333333337" y="-15.0" />
-      <point x="431.29166666666663" y="140.0" />
-      <point x="130.0" y="140.0" />
+    <edge source="java.util.concurrent.CompletableFuture.OrRelay" target="java.util.concurrent.CompletableFuture.BiCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="796.0" y="450.0" />
+      <point x="531.0" y="450.0" />
+      <point x="45.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.AsyncRun" target="java.util.concurrent.CompletableFuture.AsynchronousCompletionTask">
+      <point x="-37.33333333333326" y="-15.0" />
+      <point x="1532.6666666666667" y="140.0" />
+      <point x="1287.3333333333333" y="140.0" />
+      <point x="85.33333333333326" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.AsyncSupply" target="java.util.concurrent.ForkJoinTask">
+      <point x="0.0" y="-15.0" />
+      <point x="1426.0" y="160.0" />
+      <point x="1422.0" y="160.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniCompose" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="46.5" y="-15.0" />
-      <point x="1114.575980392157" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
+    <edge source="java.util.concurrent.CompletableFuture.BiCompletion" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="486.0" y="340.0" />
+      <point x="1038.4444444444443" y="340.0" />
+      <point x="-67.55555555555554" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.Signaller" target="java.util.concurrent.CompletableFuture.Completion">
+      <point x="0.0" y="-15.0" />
+      <point x="1426.0" y="265.0" />
+      <point x="1316.6666666666667" y="265.0" />
+      <point x="42.66666666666674" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.BiRun" target="java.util.concurrent.CompletableFuture.BiCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="44.0" y="440.0" />
+      <point x="423.0" y="440.0" />
+      <point x="-63.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.AsyncRun" target="java.lang.Runnable">
+      <point x="37.33333333333326" y="-15.0" />
+      <point x="1607.3333333333333" y="190.0" />
+      <point x="1721.3333333333333" y="190.0" />
+      <point x="37.33333333333326" y="15.0" />
+    </edge>
+    <edge source="java.lang.Runnable" target="java.lang.FunctionalInterface">
+      <point x="0.0" y="-15.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniAccept" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="-38.0" y="-15.0" />
-      <point x="2437.729166666667" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
+    <edge source="java.util.concurrent.CompletableFuture.BiApply" target="java.util.concurrent.CompletableFuture.BiCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="424.0" y="470.0" />
+      <point x="477.0" y="470.0" />
+      <point x="-9.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.Completion" target="java.util.concurrent.CompletableFuture.AsynchronousCompletionTask">
+      <point x="-42.66666666666674" y="-15.0" />
+      <point x="1231.3333333333333" y="190.0" />
+      <point x="1116.6666666666667" y="190.0" />
+      <point x="-85.33333333333326" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.UniRun" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="1234.0" y="370.0" />
+      <point x="1122.888888888889" y="370.0" />
+      <point x="16.888888888888914" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.CompletableFuture.UniHandle" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.UniApply" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="40.75" y="-15.0" />
-      <point x="2337.979166666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
+    <edge source="java.util.concurrent.ForkJoinTask" target="java.util.concurrent.Future">
+      <point x="-36.0" y="-15.0" />
+      <point x="1386.0" y="55.0" />
+      <point x="1352.0" y="55.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrApply" target="java.lang.SuppressWarnings" relationship="ANNOTATION">
-      <point x="-43.75" y="-15.0" />
-      <point x="1468.200980392157" y="425.0" />
-      <point x="1337.2291666666667" y="425.0" />
-      <point x="1337.2291666666667" y="261.0" />
-      <point x="1506.3541666666667" y="261.0" />
-      <point x="0.0" y="15.0" />
+    <edge source="java.util.concurrent.CompletableFuture.UniWhenComplete" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="942.0" y="370.0" />
+      <point x="1089.111111111111" y="370.0" />
+      <point x="-16.888888888888914" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.AsyncSupply" target="java.util.concurrent.CompletableFuture.AsynchronousCompletionTask" relationship="REALIZATION">
-      <point x="-63.75" y="-15.0" />
-      <point x="396.5759803921569" y="221.0" />
-      <point x="146.5" y="221.0" />
-      <point x="146.5" y="140.0" />
-      <point x="130.0" y="140.0" />
-      <point x="0.0" y="15.0" />
+    <edge source="java.util.concurrent.CompletableFuture.OrRun" target="java.util.concurrent.CompletableFuture.BiCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="912.0" y="440.0" />
+      <point x="549.0" y="440.0" />
+      <point x="63.0" y="15.0" />
     </edge>
-    <edge source="java.util.concurrent.CompletableFuture.OrAccept" target="java.util.concurrent.CompletableFuture.BiCompletion" relationship="GENERALIZATION">
-      <point x="41.0" y="-15.0" />
-      <point x="1253.575980392157" y="435.0" />
-      <point x="1668.2291666666667" y="435.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.concurrent.CompletableFuture.BiCompletion" target="java.util.concurrent.CompletableFuture.UniCompletion" relationship="GENERALIZATION">
-      <point x="52.25" y="-15.0" />
-      <point x="1720.4791666666667" y="353.0" />
-      <point x="1822.4791666666667" y="353.0" />
-      <point x="0.0" y="15.0" />
+    <edge source="java.util.concurrent.CompletableFuture.UniCompose" target="java.util.concurrent.CompletableFuture.UniCompletion">
+      <point x="0.0" y="-15.0" />
+      <point x="774.0" y="360.0" />
+      <point x="1072.2222222222222" y="360.0" />
+      <point x="-33.77777777777783" y="15.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="522.0" y="219.0" />
-  <SelectedNodes>
-    <node>java.util.concurrent.ForkJoinTask</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="1.13712391586599" x="966.3578955638706" y="204.13295368282866" />
+  <SelectedNodes />
   <Categories>
     <Category>Inner Classes</Category>
   </Categories>

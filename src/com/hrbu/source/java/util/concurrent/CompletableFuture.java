@@ -1802,8 +1802,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
 
     /**
      * Returns a new CompletableFuture that is asynchronously completed
-     * by a task running in the {@link ForkJoinPool#commonPool()} with
-     * the value obtained by calling the given Supplier.
+     * by a task running in the {@link ForkJoinPool#commonPool()} with the value obtained by calling the given Supplier.
+     * 返回一个新的CompletableFuture，它由运行在{@link ForkJoinPool#commonPool()}中的任务异步完成，该任务的值是通过调用给定的Supplier获得的。
      *
      * @param supplier a function returning the value to be used
      * to complete the returned CompletableFuture
@@ -1816,8 +1816,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
 
     /**
      * Returns a new CompletableFuture that is asynchronously completed
-     * by a task running in the given executor with the value obtained
-     * by calling the given Supplier.
+     * by a task running in the given executor with the value obtained by calling the given Supplier.
+     * 返回一个新的CompletableFuture，它由运行在给定执行器中的任务异步完成，该任务的值是通过调用给定的Supplier获得的。
      *
      * @param supplier a function returning the value to be used
      * to complete the returned CompletableFuture
@@ -1832,8 +1832,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
 
     /**
      * Returns a new CompletableFuture that is asynchronously completed
-     * by a task running in the {@link ForkJoinPool#commonPool()} after
-     * it runs the given action.
+     * by a task running in the {@link ForkJoinPool#commonPool()} after it runs the given action.
+     * 返回一个新的CompletableFuture，通过在{@link ForkJoinPool#commonPool()}中异步完成给定的任务。
      *
      * @param runnable the action to run before completing the
      * returned CompletableFuture
@@ -1845,8 +1845,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
 
     /**
      * Returns a new CompletableFuture that is asynchronously completed
-     * by a task running in the given executor after it runs the given
-     * action.
+     * by a task running in the given executor after it runs the given action.
+     * 返回一个新的CompletableFuture，通过在给定的执行器中异步完成给定的任务。
      *
      * @param runnable the action to run before completing the
      * returned CompletableFuture
@@ -1859,8 +1859,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Returns a new CompletableFuture that is already completed with
-     * the given value.
+     * Returns a new CompletableFuture that is already completed with the given value.
+     * 返回一个新的CompletableFuture，它已经用给定的值完成。
      *
      * @param value the value
      * @param <U> the type of the value
@@ -1871,8 +1871,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Returns {@code true} if completed in any fashion: normally,
-     * exceptionally, or via cancellation.
+     * Returns {@code true} if completed in any fashion: normally, exceptionally, or via cancellation.
+     * 返回{@code true}如果以任何方式完成:正常的，异常的，或通过取消。
      *
      * @return {@code true} if completed
      */
@@ -1881,8 +1881,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Waits if necessary for this future to complete, and then
-     * returns its result.
+     * Waits if necessary for this future to complete, and then returns its result.
+     * 如果需要的话，等待这个future完成，然后返回它的结果。
      *
      * @return the result value
      * @throws CancellationException if this future was cancelled
@@ -1896,8 +1896,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Waits if necessary for at most the given time for this future
-     * to complete, and then returns its result, if available.
+     * Waits if necessary for at most the given time for this future to complete, and then returns its result, if available.
+     * 如果有必要，最多等待给定的时间来完成这个future，然后返回它的结果(如果可用)。
      *
      * @param timeout the maximum time to wait
      * @param unit the time unit of the timeout argument
@@ -1916,13 +1916,13 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Returns the result value when complete, or throws an
-     * (unchecked) exception if completed exceptionally. To better
-     * conform with the use of common functional forms, if a
-     * computation involved in the completion of this
-     * CompletableFuture threw an exception, this method throws an
-     * (unchecked) {@link CompletionException} with the underlying
-     * exception as its cause.
+     * Returns the result value when complete, or throws an (unchecked) exception if completed exceptionally.
+     * 当完成时返回结果值，如果异常完成则抛出(未检查的)异常。
+     * To better conform with the use of common functional forms,
+     * if a computation involved in the completion of this CompletableFuture threw an exception,
+     * this method throws an (unchecked) {@link CompletionException} with the underlying exception as its cause.
+     * 为了更好地符合常用功能形式的使用，如果与CompletableFuture完成相关的计算抛出异常，
+     * 这个方法抛出一个(未检查的){@link CompletionException}，底层异常是它的原因。
      *
      * @return the result value
      * @throws CancellationException if the computation was cancelled
@@ -1935,8 +1935,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Returns the result value (or throws any encountered exception)
-     * if completed, else returns the given valueIfAbsent.
+     * Returns the result value (or throws any encountered exception) if completed, else returns the given valueIfAbsent.
+     * 如果完成，返回结果值(或抛出任何遇到的异常)，否则返回给定的valueIfAbsent。
      *
      * @param valueIfAbsent the value to return if not completed
      * @return the result value, if completed, else the given valueIfAbsent
@@ -1950,8 +1950,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * If not already completed, sets the value returned by {@link
-     * #get()} and related methods to the given value.
+     * If not already completed, sets the value returned by {@link #get()} and related methods to the given value.
+     * 如果尚未完成，则将{@link #get()}方法和相关方法返回的值设置为给定值。
      *
      * @param value the result value
      * @return {@code true} if this invocation caused this CompletableFuture
@@ -1964,8 +1964,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * If not already completed, causes invocations of {@link #get()}
-     * and related methods to throw the given exception.
+     * If not already completed, causes invocations of {@link #get()} and related methods to throw the given exception.
+     * 如果尚未完成，则将{@link #get()}方法和相关方法返回的值设置为给定的异常。
      *
      * @param ex the exception
      * @return {@code true} if this invocation caused this CompletableFuture
@@ -2199,21 +2199,21 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     /* ------------- Arbitrary-arity constructions -------------- */
 
     /**
-     * Returns a new CompletableFuture that is completed when all of
-     * the given CompletableFutures complete.  If any of the given
-     * CompletableFutures complete exceptionally, then the returned
-     * CompletableFuture also does so, with a CompletionException
-     * holding this exception as its cause.  Otherwise, the results,
-     * if any, of the given CompletableFutures are not reflected in
-     * the returned CompletableFuture, but may be obtained by
-     * inspecting them individually. If no CompletableFutures are
-     * provided, returns a CompletableFuture completed with the value
-     * {@code null}.
+     * Returns a new CompletableFuture that is completed when all of the given CompletableFutures complete.
+     * 当所有给定的CompletableFutures完成时，返回一个新的CompletableFuture。
+     * If any of the given CompletableFutures complete exceptionally, then the returned CompletableFuture also does so,
+     * with a CompletionException holding this exception as its cause.
+     * 如果给定的CompletableFuture中的任何一个异常完成，那么返回的CompletableFuture也会这样做，CompletionException将此异常作为其原因。
+     * Otherwise, the results, if any, of the given CompletableFutures are not reflected in the returned CompletableFuture,
+     * but may be obtained by inspecting them individually.
+     * 否则，给定的CompletableFutures的结果(如果有的话)不会反映在返回的CompletableFuture中，但可以通过逐个检查得到。
+     * If no CompletableFutures are provided, returns a CompletableFuture completed with the value {@code null}.
+     * 如果没有提供CompletableFuture，返回一个CompletableFuture，值为{@code null}。
      *
      * <p>Among the applications of this method is to await completion
-     * of a set of independent CompletableFutures before continuing a
-     * program, as in: {@code CompletableFuture.allOf(c1, c2,
-     * c3).join();}.
+     * of a set of independent CompletableFutures before continuing a program,
+     * 这个方法的应用是在继续一个程序之前等待一组独立的可完成的 CompletableFutures。
+     * as in: {@code CompletableFuture.allOf(c1, c2, c3).join();}.
      *
      * @param cfs the CompletableFutures
      * @return a new CompletableFuture that is completed when all of the
@@ -2226,12 +2226,12 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Returns a new CompletableFuture that is completed when any of
-     * the given CompletableFutures complete, with the same result.
-     * Otherwise, if it completed exceptionally, the returned
-     * CompletableFuture also does so, with a CompletionException
-     * holding this exception as its cause.  If no CompletableFutures
-     * are provided, returns an incomplete CompletableFuture.
+     * Returns a new CompletableFuture that is completed when any of the given CompletableFutures complete, with the same result.
+     * 返回一个新的CompletableFuture，当任何给定的CompletableFutures完成时，该CompletableFuture就会完成，结果是相同的。
+     * Otherwise, if it completed exceptionally, the returned CompletableFuture also does so, with a CompletionException holding this exception as its cause.
+     * 否则，如果异常完成，则返回的CompletableFuture也会这样做，CompletionException将此异常作为其原因。
+     * If no CompletableFutures are provided, returns an incomplete CompletableFuture.
+     * 如果没有提供CompletableFuture，则返回一个未完成的CompletableFuture。
      *
      * @param cfs the CompletableFutures
      * @return a new CompletableFuture that is completed with the
