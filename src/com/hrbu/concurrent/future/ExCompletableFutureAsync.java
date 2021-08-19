@@ -55,14 +55,17 @@ public class ExCompletableFutureAsync {
         }
     }
 
-    public void asyncRun() {
-        Calculate calculate = new Calculate(5);
+    public void asyncRun() throws InterruptedException {
+        Calculate calculate = new Calculate(20);
         CompletableFuture<Void> future = CompletableFuture.runAsync(calculate, executorService);
         System.out.println("async run other");
 
-//        for (int i = 0; i < 8; i++) {
-//            executorService.submit((Runnable) future::join);
-//        }
+        for (int i = 0; i < 8; i++) {
+            executorService.submit((Runnable) future::join);
+        }
+
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("future dependents is " + future.getNumberOfDependents());
 
         try {
             future.join();
