@@ -1644,9 +1644,9 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     /* ------------- Signallers -------------- */
 
     /**
-     * Completion for recording and releasing a waiting thread.  This
-     * class implements ManagedBlocker to avoid starvation when
-     * blocking actions pile up in ForkJoinPools.
+     * Completion for recording and releasing a waiting thread.
+     * This class implements ManagedBlocker to avoid starvation when blocking actions pile up in ForkJoinPools.
+     * 记录和释放等待线程的完成。
      */
     @SuppressWarnings("serial")
     static final class Signaller extends Completion
@@ -1654,7 +1654,7 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
         long nanos;                    // wait time if timed
         final long deadline;           // non-zero if timed
         volatile int interruptControl; // > 0: interruptible, < 0: interrupted
-        volatile Thread thread;
+        volatile Thread thread; // 执行异步的线程
 
         Signaller(boolean interruptible, long nanos, long deadline) {
             this.thread = Thread.currentThread();
@@ -1666,11 +1666,11 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
             Thread w; // no need to atomically claim
             if ((w = thread) != null) {
                 thread = null;
-                LockSupport.unpark(w);
+                LockSupport.unpark(w); // 唤起阻塞线程
             }
             return null;
         }
-        public boolean isReleasable() {
+        public boolean isReleasable() { // 在ForkJoinPoll中while循环判断是否被释放
             if (thread == null)
                 return true;
             if (Thread.interrupted()) {
@@ -2247,11 +2247,11 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     /* ------------- Control and status methods -------------- */
 
     /**
-     * If not already completed, completes this CompletableFuture with
-     * a {@link CancellationException}. Dependent CompletableFutures
-     * that have not already completed will also complete
-     * exceptionally, with a {@link CompletionException} caused by
-     * this {@code CancellationException}.
+     * If not already completed, completes this CompletableFuture with a {@link CancellationException}.
+     * Dependent CompletableFutures that have not already completed will also complete
+     * exceptionally, with a {@link CompletionException} caused by this {@code CancellationException}.
+     * 如果还没有完成，使用{@link CancellationException}来完成CompletableFuture。
+     * 未完成的依赖CompletableFutures也会异常完成，由{@code CancellationException}引起的{@link CompletionException}。
      *
      * @param mayInterruptIfRunning this value has no effect in this
      * implementation because interrupts are not used to control
@@ -2267,8 +2267,8 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Returns {@code true} if this CompletableFuture was cancelled
-     * before it completed normally.
+     * Returns {@code true} if this CompletableFuture was cancelled before it completed normally.
+     * 如果CompletableFuture在正常完成之前被取消，则返回{@code true}。
      *
      * @return {@code true} if this CompletableFuture was cancelled
      * before it completed normally
@@ -2280,11 +2280,11 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
     }
 
     /**
-     * Returns {@code true} if this CompletableFuture completed
-     * exceptionally, in any way. Possible causes include
-     * cancellation, explicit invocation of {@code
-     * completeExceptionally}, and abrupt termination of a
-     * CompletionStage action.
+     * Returns {@code true} if this CompletableFuture completed exceptionally,
+     * in any way. Possible causes include cancellation,
+     * explicit invocation of {@code completeExceptionally}, and abrupt termination of a CompletionStage action.
+     * 如果这个CompletableFuture异常完成，返回{@code true}，
+     * 以任何方式。可能的原因包括取消，显式调用{@code completeExceptionally}，和CompletionStage动作的突然终止。
      *
      * @return {@code true} if this CompletableFuture completed
      * exceptionally
