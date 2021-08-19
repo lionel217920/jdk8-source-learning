@@ -1,6 +1,8 @@
 package com.hrbu.concurrent.future;
 
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +13,7 @@ import java.util.function.Supplier;
  */
 public class ExCompletableFutureAsync {
 
-    private static ExecutorService executorService = Executors.newFixedThreadPool(10);
+    private static final ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     public static class Calculate implements Supplier<Integer>, Runnable {
 
@@ -27,9 +29,9 @@ public class ExCompletableFutureAsync {
         public Integer get() {
             System.out.println(name + " begin..");
             sleep();
-//            if (value.equals(1)) {
-//                throw new RuntimeException();
-//            }
+            if (value.equals(5)) {
+                throw new RuntimeException();
+            }
             System.out.println(name + " end " + value);
             return value;
         }
@@ -38,12 +40,15 @@ public class ExCompletableFutureAsync {
         public void run() {
             System.out.println(name + " begin..");
             sleep();
+            if (value.equals(5)) {
+                throw new RuntimeException();
+            }
             System.out.println(name + " end " + value);
         }
 
         private void sleep() {
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(value);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -51,26 +56,42 @@ public class ExCompletableFutureAsync {
     }
 
     public void asyncRun() {
-        for (int i = 0; i < 10; i++) {
-            Calculate calculate = new Calculate(i);
-            CompletableFuture<Void> future = CompletableFuture.runAsync(calculate);
+        Calculate calculate = new Calculate(5);
+        CompletableFuture<Void> future = CompletableFuture.runAsync(calculate, executorService);
+        System.out.println("async run other");
 
-//            try {
-//                future.get();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            } catch (ExecutionException e) {
-//                e.printStackTrace();
-//            }
+//        for (int i = 0; i < 8; i++) {
+//            executorService.submit((Runnable) future::join);
+//        }
+
+        try {
             future.join();
-
-            System.out.println(future.isDone());
+        } catch (CompletionException e) {
+            System.out.println(e.getMessage());
         }
+    }
+
+    public void asyncRunWithCancel() throws InterruptedException {
+        Calculate calculate = new Calculate(20);
+        CompletableFuture<Void> future = CompletableFuture.runAsync(calculate, executorService);
+        System.out.println("async run other");
+
+        TimeUnit.SECONDS.sleep(5);
+        System.out.println("future is cancelled " + future.isCancelled());
+        boolean cancel = future.cancel(true);
+        System.out.println("future cancel result " + cancel);
+
+        try {
+            future.join();
+        } catch (CancellationException e) {
+
+        }
+
+        System.out.println(future.isCompletedExceptionally());
     }
 
     public void supplyAsync() {
         Integer totalCount = 0;
-
         for (int i = 0; i < 10; i++) {
             Calculate calculate = new Calculate(i);
             CompletableFuture<Integer> future = CompletableFuture.supplyAsync(calculate, executorService);
@@ -80,12 +101,15 @@ public class ExCompletableFutureAsync {
         System.out.println(totalCount);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ExCompletableFutureAsync futureAsync = new ExCompletableFutureAsync();
+
         futureAsync.asyncRun();
+        //futureAsync.asyncRunWithCancel();
         //futureAsync.supplyAsync();
 
         executorService.shutdown();
+        System.out.println("main end");
     }
 
 }
