@@ -18,7 +18,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExCrawlerExecutor {
 
-    private static final ExecutorService executor = new ThreadPoolExecutor(5, 5, 0L,TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(50));
+    // CallerRunsPolicy在任务被拒绝添加后，会在调用execute方法的的线程来执行被拒绝的任务
+    // new ThreadPoolExecutor.CallerRunsPolicy()
+    private static final ExecutorService executor = new ThreadPoolExecutor(5, 5, 0L,TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<Runnable>(50));
 
     public static <Q> List<Q> execute(List<Callable<Q>> taskList) {
         return ExecutorUtils.execute(executor, taskList);
@@ -32,7 +35,7 @@ public class ExCrawlerExecutor {
                 Future<Q> future = executor.submit(qCallable);
                 futureList.add(future);
             } catch (RejectedExecutionException e) {
-
+                System.out.println("RejectedExecutionException");
             }
         }
 
