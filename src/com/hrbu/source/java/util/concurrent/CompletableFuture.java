@@ -1000,7 +1000,7 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
 
     /* ------------- Two-input Completions -------------- */
 
-    /** A Completion for an action with two sources */
+    /** A Completion for an action with two sources 具有两个源的操作*/
     @SuppressWarnings("serial")
     abstract static class BiCompletion<T,U,V> extends UniCompletion<T,V> {
         CompletableFuture<U> snd; // second source for action
@@ -1010,7 +1010,7 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
         }
     }
 
-    /** A Completion delegating to a BiCompletion */
+    /** A Completion delegating to a BiCompletion 委派给BiCopletion */
     @SuppressWarnings("serial")
     static final class CoCompletion extends Completion {
         BiCompletion<?,?,?> base;
