@@ -1,4 +1,4 @@
-package com.hrbu.test.collection;
+package com.hrbu.collection;
 
 import java.util.HashMap;
 
